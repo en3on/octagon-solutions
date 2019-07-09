@@ -22,11 +22,11 @@ class ContactForm extends React.Component {
   submitHandler(e) {
     e.preventDefault();
 
-    // this.props.onSubmit(this.state);
+    this.props.onSubmit(this.state);
   }
 
   handleFormChange(e) {
-    const target = e.target;
+    const {target} = e;
 
     this.setState({
       [target.name]: target.value,
