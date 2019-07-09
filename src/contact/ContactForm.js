@@ -26,7 +26,7 @@ class ContactForm extends React.Component {
   }
 
   handleFormChange(e) {
-    const {target} = e;
+    const target = e.target;
 
     this.setState({
       [target.name]: target.value,
@@ -50,13 +50,13 @@ class ContactForm extends React.Component {
       <h1>Contact Us!</h1>
         <form onSubmit={this.submitHandler}>
           <div>
-          <label htmlFor="first-name">First Name</label>
-          <input type="text" name="first-name" value={this.state.firstName} onChange={this.handleFormChange}/>
-          <label htmlFor="last-name">Last Name</label>
-          <input type="text" name="last-name" value={this.state.lastName} onChange={this.handleFormChange} />
-          <label htmlFor="Email">Email</label>
+          <label htmlFor="firstName">First Name</label>
+          <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleFormChange}/>
+          <label htmlFor="lastName">Last Name</label>
+          <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleFormChange} />
+          <label htmlFor="email">Email</label>
           <input type="text" name="email" value={this.state.email} onChange={this.handleFormChange}/>
-          <label htmlFor="last-name">Message</label>
+          <label htmlFor="message">Message</label>
           <textarea name="message" value={this.state.message} onChange={this.handleFormChange} cols="30" rows="10" />
           <input type="submit" onClick={this.submitHandler} value="Submit"/>
           </div>
