@@ -26,7 +26,7 @@ class ContactForm extends React.Component {
   }
 
   handleFormChange(e) {
-    const target = e.target;
+    const {target} = e;
 
     this.setState({
       [target.name]: target.value,
@@ -51,14 +51,14 @@ class ContactForm extends React.Component {
         <form onSubmit={this.submitHandler}>
           <div>
           <label htmlFor="firstName">First Name</label>
-          <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleFormChange}/>
+          <input type="text" name="firstName" id="firstName" value={this.state.firstName} onChange={this.handleFormChange}/>
           <label htmlFor="lastName">Last Name</label>
-          <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleFormChange} />
+          <input type="text" name="lastName" id="lastName" value={this.state.lastName} onChange={this.handleFormChange} />
           <label htmlFor="email">Email</label>
-          <input type="text" name="email" value={this.state.email} onChange={this.handleFormChange}/>
+          <input type="text" name="email" id="email" value={this.state.email} onChange={this.handleFormChange}/>
           <label htmlFor="message">Message</label>
-          <textarea name="message" value={this.state.message} onChange={this.handleFormChange} cols="30" rows="10" />
-          <input type="submit" onClick={this.submitHandler} value="Submit"/>
+          <textarea name="message" id="message" value={this.state.message} onChange={this.handleFormChange} cols="30" rows="10" />
+          <input type="submit" id="submitButton" onClick={this.submitHandler} value="Submit"/>
           </div>
         </form>
       </div>
