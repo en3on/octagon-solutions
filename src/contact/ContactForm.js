@@ -47,8 +47,9 @@ class ContactForm extends React.Component {
   render() {
     return (
       <div>
-        <h1>Contact Us!</h1>
+      <h1>Contact Us!</h1>
         <form onSubmit={this.submitHandler}>
+          <div>
           <label htmlFor="first-name">First Name</label>
           <input type="text" name="first-name" value={this.state.firstName} onChange={this.handleFormChange}/>
           <label htmlFor="last-name">Last Name</label>
@@ -58,6 +59,7 @@ class ContactForm extends React.Component {
           <label htmlFor="last-name">Message</label>
           <textarea name="message" value={this.state.message} onChange={this.handleFormChange} cols="30" rows="10" />
           <input type="submit" onClick={this.submitHandler} value="Submit"/>
+          </div>
         </form>
       </div>
     )
