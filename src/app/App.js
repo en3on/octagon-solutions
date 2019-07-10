@@ -13,7 +13,6 @@ class App extends React.Component {
 
   onFormSubmit(payloadData) {
     // insert logic to post to DB as a post req
-    console.log(payloadData);
   }
 
   render() {
