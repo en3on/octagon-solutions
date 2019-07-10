@@ -3,6 +3,7 @@
 
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
+import './ContactForm.css'
 
 class ContactForm extends React.Component {
   constructor(props) {
@@ -47,9 +48,10 @@ class ContactForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="form-component-container">
         <h1>Contact Us!</h1>
-        <Form onSubmit={this.submitHandler}>
+        <div className="form-container">
+        <Form className="form" onSubmit={this.submitHandler}>
           <Form.Group controlId="formFirstName">
             <Form.Label>First Name</Form.Label>
             <Form.Control type="text" name="firstName" onChange={this.handleFormChange}></Form.Control>
@@ -69,18 +71,8 @@ class ContactForm extends React.Component {
           <Button variant="primary" id="contactSubmitButton" type="submit" onClick={this.submitHandler}>
             Submit
           </Button>
-          {/* <div>
-          <label htmlFor="firstName">First Name</label>
-          <input type="text" name="firstName" id="firstName" value={this.state.firstName} onChange={this.handleFormChange}/>
-          <label htmlFor="lastName">Last Name</label>
-          <input type="text" name="lastName" id="lastName" value={this.state.lastName} onChange={this.handleFormChange} />
-          <label htmlFor="email">Email</label>
-          <input type="text" name="email" id="email" value={this.state.email} onChange={this.handleFormChange}/>
-          <label htmlFor="message">Message</label>
-          <textarea name="message" id="message" value={this.state.message} onChange={this.handleFormChange} cols="30" rows="10" />
-          <input type="submit" id="submitButton" onClick={this.submitHandler} value="Submit"/>
-          </div> */}
         </Form>
+        </div>
       </div>
     )
   }
