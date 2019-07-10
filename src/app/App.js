@@ -6,13 +6,19 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {}
+    this.state = {};
+
+    this.onFormSubmit = this.onFormSubmit.bind(this);
+  }
+
+  onFormSubmit(payloadData) {
+    // insert logic to post to DB as a post req
   }
 
   render() {
     return (
     <div>
-      <ContactForm />
+      <ContactForm onSubmit={this.onFormSubmit} />
     </div>
     );
   };
