@@ -1,5 +1,5 @@
 // Contact Form for clients to contact the administrator.
-// The contact form requests First Name, Last Name & Email, message
+// The contact form requests First Name, Last Name & Email & message
 
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
@@ -58,7 +58,7 @@ class ContactForm extends React.Component {
             <Form.Label>Last Name</Form.Label>
             <Form.Control type="text" name="lastName" onChange={this.handleFormChange} />
           </Form.Group>
-          <Form.Group controlId="email">
+          <Form.Group controlId="formEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control type="text" name="email" onChange={this.handleFormChange} />
           </Form.Group>
