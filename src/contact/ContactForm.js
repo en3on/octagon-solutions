@@ -2,6 +2,7 @@
 // The contact form requests First Name, Last Name & Email, message
 
 import React from 'react';
+import {Form, Button} from 'react-bootstrap';
 
 class ContactForm extends React.Component {
   constructor(props) {
@@ -47,9 +48,25 @@ class ContactForm extends React.Component {
   render() {
     return (
       <div>
-      <h1>Contact Us!</h1>
-        <form onSubmit={this.submitHandler}>
-          <div>
+        <h1>Contact Us!</h1>
+        <Form onSubmit={this.submitHandler}>
+          <Form.Group controlId="formFirstName">
+            <Form.Label>First Name</Form.Label>
+            <Form.Control type="text" name="firstName" onChange={this.handleFormChange}></Form.Control>
+          </Form.Group>
+          <Form.Group controlId="formLastName">
+            <Form.Label>First Name</Form.Label>
+            <Form.Control type="text" name="lastName" onChange={this.handleFormChange}></Form.Control>
+          </Form.Group>
+          <Form.Group controlId="email">
+            <Form.Label>First Name</Form.Label>
+            <Form.Control type="text" name="email" onChange={this.handleFormChange}></Form.Control>
+          </Form.Group>
+          <Form.Group controlId="message">
+            <Form.Label>First Name</Form.Label>
+            <Form.Control type="text" name="message" onChange={this.handleFormChange}></Form.Control>
+          </Form.Group>
+          {/* <div>
           <label htmlFor="firstName">First Name</label>
           <input type="text" name="firstName" id="firstName" value={this.state.firstName} onChange={this.handleFormChange}/>
           <label htmlFor="lastName">Last Name</label>
@@ -59,8 +76,8 @@ class ContactForm extends React.Component {
           <label htmlFor="message">Message</label>
           <textarea name="message" id="message" value={this.state.message} onChange={this.handleFormChange} cols="30" rows="10" />
           <input type="submit" id="submitButton" onClick={this.submitHandler} value="Submit"/>
-          </div>
-        </form>
+          </div> */}
+        </Form>
       </div>
     )
   }
