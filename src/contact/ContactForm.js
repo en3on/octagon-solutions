@@ -23,8 +23,7 @@ class ContactForm extends React.Component {
 
   submitHandler(e) {
     e.preventDefault();
-
-    this.props.onSubmit(this.state);
+    // post data into db
   }
 
   handleFormChange(e) {
@@ -50,21 +49,20 @@ class ContactForm extends React.Component {
     return (
       <div className="form-component-container">
         <h1>Contact Us!</h1>
-        <div className="form-container">
-        <Form className="form" onSubmit={this.submitHandler}>
+        <Form className="contact-form" onSubmit={this.submitHandler}>
           <Form.Group controlId="formFirstName">
             <Form.Label>First Name</Form.Label>
-            <Form.Control type="text" name="firstName" onChange={this.handleFormChange}></Form.Control>
+            <Form.Control type="text" name="firstName" onChange={this.handleFormChange} />
           </Form.Group>
           <Form.Group controlId="formLastName">
             <Form.Label>Last Name</Form.Label>
-            <Form.Control type="text" name="lastName" onChange={this.handleFormChange}></Form.Control>
+            <Form.Control type="text" name="lastName" onChange={this.handleFormChange} />
           </Form.Group>
           <Form.Group controlId="email">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="text" name="email" onChange={this.handleFormChange}></Form.Control>
+            <Form.Control type="text" name="email" onChange={this.handleFormChange} />
           </Form.Group>
-          <Form.Group controlId="message">
+          <Form.Group controlId="formMessage">
             <Form.Label>Message</Form.Label>
             <Form.Control as="textarea" rows="5" name="message" onChange={this.handleFormChange} />
           </Form.Group>
@@ -72,7 +70,6 @@ class ContactForm extends React.Component {
             Submit
           </Button>
         </Form>
-        </div>
       </div>
     )
   }
