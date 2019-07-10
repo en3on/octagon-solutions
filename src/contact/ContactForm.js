@@ -1,7 +1,9 @@
 // Contact Form for clients to contact the administrator.
-// The contact form requests First Name, Last Name & Email, message
+// The contact form requests First Name, Last Name & Email & message
 
 import React from 'react';
+import {Form, Button} from 'react-bootstrap';
+import './ContactForm.css'
 
 class ContactForm extends React.Component {
   constructor(props) {
@@ -21,8 +23,7 @@ class ContactForm extends React.Component {
 
   submitHandler(e) {
     e.preventDefault();
-
-    this.props.onSubmit(this.state);
+    // post data into db
   }
 
   handleFormChange(e) {
@@ -46,21 +47,29 @@ class ContactForm extends React.Component {
 
   render() {
     return (
-      <div>
-      <h1>Contact Us!</h1>
-        <form onSubmit={this.submitHandler}>
-          <div>
-          <label htmlFor="firstName">First Name</label>
-          <input type="text" name="firstName" id="firstName" value={this.state.firstName} onChange={this.handleFormChange}/>
-          <label htmlFor="lastName">Last Name</label>
-          <input type="text" name="lastName" id="lastName" value={this.state.lastName} onChange={this.handleFormChange} />
-          <label htmlFor="email">Email</label>
-          <input type="text" name="email" id="email" value={this.state.email} onChange={this.handleFormChange}/>
-          <label htmlFor="message">Message</label>
-          <textarea name="message" id="message" value={this.state.message} onChange={this.handleFormChange} cols="30" rows="10" />
-          <input type="submit" id="submitButton" onClick={this.submitHandler} value="Submit"/>
-          </div>
-        </form>
+      <div className="form-component-container">
+        <h1>Contact Us!</h1>
+        <Form className="contact-form" onSubmit={this.submitHandler}>
+          <Form.Group controlId="formFirstName">
+            <Form.Label>First Name</Form.Label>
+            <Form.Control type="text" name="firstName" onChange={this.handleFormChange} />
+          </Form.Group>
+          <Form.Group controlId="formLastName">
+            <Form.Label>Last Name</Form.Label>
+            <Form.Control type="text" name="lastName" onChange={this.handleFormChange} />
+          </Form.Group>
+          <Form.Group controlId="formEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="text" name="email" onChange={this.handleFormChange} />
+          </Form.Group>
+          <Form.Group controlId="formMessage">
+            <Form.Label>Message</Form.Label>
+            <Form.Control as="textarea" rows="5" name="message" onChange={this.handleFormChange} />
+          </Form.Group>
+          <Button variant="primary" id="contactSubmitButton" type="submit" onClick={this.submitHandler}>
+            Submit
+          </Button>
+        </Form>
       </div>
     )
   }
