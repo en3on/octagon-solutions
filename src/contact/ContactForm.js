@@ -55,17 +55,20 @@ class ContactForm extends React.Component {
             <Form.Control type="text" name="firstName" onChange={this.handleFormChange}></Form.Control>
           </Form.Group>
           <Form.Group controlId="formLastName">
-            <Form.Label>First Name</Form.Label>
+            <Form.Label>Last Name</Form.Label>
             <Form.Control type="text" name="lastName" onChange={this.handleFormChange}></Form.Control>
           </Form.Group>
           <Form.Group controlId="email">
-            <Form.Label>First Name</Form.Label>
+            <Form.Label>Email</Form.Label>
             <Form.Control type="text" name="email" onChange={this.handleFormChange}></Form.Control>
           </Form.Group>
           <Form.Group controlId="message">
-            <Form.Label>First Name</Form.Label>
+            <Form.Label>Message</Form.Label>
             <Form.Control type="text" name="message" onChange={this.handleFormChange}></Form.Control>
           </Form.Group>
+          <Button variant="primary" id="contactSubmitButton" type="submit" onClick={this.submitHandler}>
+            Submit
+          </Button>
           {/* <div>
           <label htmlFor="firstName">First Name</label>
           <input type="text" name="firstName" id="firstName" value={this.state.firstName} onChange={this.handleFormChange}/>
