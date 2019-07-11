@@ -2,10 +2,10 @@
 // The contact form requests First Name, Last Name, Email, Password & Confirm Password.
 // The sign up form then redirects the user to their personal dashboards
 
-import React from 'react';
+import React, {Component} from 'react';
 import {Form, Button} from 'react-bootstrap';
 
-class RegisterForm extends React.Component {
+class RegisterForm extends Component {
   constructor(props) {
     super(props);
 
@@ -17,9 +17,7 @@ class RegisterForm extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.confirmPassword !== this.state.confirmPassword) {
-      this.passwordValidator();
-    }
+    if (prevState.confirmPassword !== this.state.confirmPassword) this.passwordValidator();
   }
 
   passwordValidator() {
