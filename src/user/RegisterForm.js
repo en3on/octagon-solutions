@@ -5,7 +5,7 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
 
-class SignUpForm extends React.Component {
+class RegisterForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -77,4 +77,4 @@ class SignUpForm extends React.Component {
   }
 } 
 
-export default SignUpForm;
+export default RegisterForm;
