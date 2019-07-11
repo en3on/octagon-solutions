@@ -21,7 +21,6 @@ class SignInForm extends React.Component {
 
   submitHandler(e) {
     e.preventDefault();
-    // post login into the db
   }
 
   handleFormChange(e) {
@@ -32,9 +31,7 @@ class SignInForm extends React.Component {
     });
   }
 
-  resetForm(e) {
-    e.preventDefault();
-
+  resetForm() {
     this.setState({
       email: '',
       password: '',
@@ -42,24 +39,27 @@ class SignInForm extends React.Component {
   }
 
   render() {
-    return (
-      <div className="form-component-container">
-        <h1>Sign In To Your Account</h1>
-        <Form className="sign-in-form" onSubmit={this.submitHandler}>
-          <Form.Group controlId="formEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control type="text" name="email" onChange={this.handleFormChange} />
-          </Form.Group>
-          <Form.Group controlId="formPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" name="password" onChange={this.handleFormChange} />
-          </Form.Group>
-          <Button variant="primary" id="signInSubmitButton" type="submit" onClick={this.submitHandler}>
-            Login
-          </Button>
-        </Form>
-      </div>
-    )
+      return (
+        <div className="form-component-container">
+          <h1>Sign In To Your Account</h1>
+          <Form className="sign-in-form" onSubmit={this.submitHandler}>
+            <Form.Group controlId="formEmail">
+              <Form.Label>Email</Form.Label>
+              <Form.Control type="email" name="email" onChange={this.handleFormChange} />
+            </Form.Group>
+            <Form.Group controlId="formPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" name="password" onChange={this.handleFormChange} />
+            </Form.Group>
+            <Button variant="primary" id="signInSubmitButton" type="submit" onClick={this.submitHandler}>
+              Login
+            </Button>
+            <Button className="mx-2" variant="secondary" id="reset-button" type="reset" onClick={this.resetForm}>
+              Reset
+            </Button>
+          </Form>
+        </div>
+      )
   }
 } 
 
