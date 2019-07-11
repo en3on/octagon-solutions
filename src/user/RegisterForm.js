@@ -45,28 +45,28 @@ class RegisterForm extends Component {
         <Form className="contact-form" onSubmit={this.submitHandler}>
           <Form.Group controlId="formFirstName">
             <Form.Label>First Name</Form.Label>
-            <Form.Control type="text" name="firstName" onChange={this.handleFormChange} />
+            <Form.Control type="text" name="firstName" onChange={this.handleFormChange} required />
           </Form.Group>
           <Form.Group controlId="formLastName">
             <Form.Label>Last Name</Form.Label>
-            <Form.Control type="text" name="lastName" onChange={this.handleFormChange} />
+            <Form.Control type="text" name="lastName" onChange={this.handleFormChange} required />
           </Form.Group>
           <Form.Group controlId="formEmail">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="email" name="email" onChange={this.handleFormChange} />
+            <Form.Control type="email" name="email" onChange={this.handleFormChange} required />
           </Form.Group>
           <Form.Group controlId="formPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" name="password" onChange={this.handleFormChange} />
+            <Form.Control type="password" name="password" onChange={this.handleFormChange} required />
           </Form.Group>
          
           <Form.Group controlId="formConfirmPassword">
             <Form.Label>Confirm Password</Form.Label>
-            <Form.Control type="password" name="confirmPassword" onChange={this.handleFormChange} />
+            <Form.Control type="password" name="confirmPassword" onChange={this.handleFormChange} required />
             <div>{this.state.errorMessage || null}</div>
           </Form.Group>
 
-          <Button variant="primary" id="contactSubmitButton" type="submit" onClick={this.submitHandler}>
+          <Button variant="primary" id="registerSubmitButton" type="submit" onClick={this.submitHandler}>
             Submit
           </Button>
         </Form>
