@@ -31,6 +31,7 @@ class SignInForm extends React.Component {
     });
   }
 
+  // special reset method that resets the entire state for user convenience
   resetForm() {
     this.setState({
       email: '',
