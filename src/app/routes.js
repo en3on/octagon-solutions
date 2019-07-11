@@ -14,6 +14,7 @@ class Routes extends Component {
         <Route path="/register" component={RegisterForm} />
         <Route path="/admin/user/:id" component={UserProfile} />
         <Route path="/user/:id" component={DashBoard} />
+        <Route path="user/:id/edit" component={EditUserForm} />
         <Route component={PageNotFound} />
       </Switch>
     )
