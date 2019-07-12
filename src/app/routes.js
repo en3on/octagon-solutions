@@ -5,7 +5,7 @@ import SignInPage from '../user/SignInPage';
 import RegisterPage from '../user/RegisterPage';
 import UserProfileView from '../admin/UserProfileView';
 import PageNotFound from '../app/PageNotFound';
-import DashBoard from '../user/DashBoard';
+import UserDashBoard from '../user/UserDashBoard';
 
 class Routes extends Component {
   render() {
