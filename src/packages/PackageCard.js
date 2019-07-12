@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {Card, Button} from 'react-bootstrap';
-import './PackageCard.css'
+import './PackageCard.css';
 
 class PackageCard extends Component {
   render() {
     return (
-      <Card className="package-card">l
+      <Card className="package-card">
         <Card.Img variant="top" src={this.props.img} />
         <Card.Body>
           <Card.Title>{this.props.title}</Card.Title>
@@ -19,7 +19,7 @@ class PackageCard extends Component {
       </Card.Body>
       </Card>
     );
-  }
+  };
 }
 
 export default PackageCard;
