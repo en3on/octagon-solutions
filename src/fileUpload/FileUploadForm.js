@@ -30,6 +30,11 @@ class FileUpload extends React.Component {
     });
   }
 
+  onFileAdd(e) {
+    e.preventDefault();
+    document.querySelector('#fileUploader').value = '';
+  }
+
   submitHandler(e) {
     e.preventDefault();
     // post data into db
