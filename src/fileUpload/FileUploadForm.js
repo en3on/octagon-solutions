@@ -56,6 +56,9 @@ class FileUpload extends React.Component {
             <Form.Control type="file" id="fileUploader" onChange={this.handleUploadFormChange} /> 
             <Button variant="primary" id="fileAddButton" onClick={this.onFileAdd}>Add File</Button>
           </Form.Group>
+          <Form.Group controlId="formFilesAddedLabel">
+            <Form.Label>Your added files:</Form.Label>
+          </Form.Group>
           <Form.Group controlId="formDescription">
             <Form.Label>Description</Form.Label>
             <Form.Control as="textarea" rows="5" name="description" onChange={this.handleFormChange} />
