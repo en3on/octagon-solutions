@@ -11,7 +11,7 @@ class BookingForm extends React.Component {
     // assuming that the value of the available booking times are structured in an array format
     // retrieved from the API (i.e: ['Monday at 4:00PM', 'Tuesday at 3:00PM'])
     this.state = {
-      availableTimes: ['Monday at 4:00PM', 'Tuesday at 3:00PM', 'Thursday at 3:00PM'], 
+      availableTimes: [], 
       selectedTime: '',
     };  
 
@@ -21,8 +21,6 @@ class BookingForm extends React.Component {
 
   submitHandler(e) {
     e.preventDefault();
-    console.log(this.state.selectedTime);
-    console.log(this.state.message);
   }
 
   handleFormChange(e) {
