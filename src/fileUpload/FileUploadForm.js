@@ -24,7 +24,10 @@ class FileUpload extends React.Component {
   }
 
   handleUploadFormChange(e) {
-    
+    this.setState({
+      file: [...this.state.files, e.target.files[0]],
+      filename: e.target.files[0].name,
+    });
   }
 
   submitHandler(e) {
