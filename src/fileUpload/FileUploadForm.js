@@ -24,8 +24,8 @@ class FileUpload extends React.Component {
 
   handleUploadFormChange(e) {
     this.setState({
-      file: [...this.state.files, e.target.files[0]],
-      filename: [...this.state.filenames, e.target.files[0].name],
+      files: [...this.state.files, e.target.files[0]],
+      filenames: [...this.state.filenames, e.target.files[0].name],
     });
   }
 
@@ -59,6 +59,7 @@ class FileUpload extends React.Component {
           <Form.Group controlId="formFilesAddedLabel">
             <Form.Label>Your added files:</Form.Label>
           </Form.Group>
+          {console.log(this.state.files)}
           {this.state.files.map(file => {
             return (
               <ListGroup>
