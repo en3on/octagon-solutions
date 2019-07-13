@@ -19,8 +19,7 @@ class FileUpload extends React.Component {
     this.submitHandler = this.submitHandler.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleUploadFormChange = this.handleUploadFormChange.bind(this); 
-    this.onFileAdd = this.onUpload.bind(this);
-    this.onFormSubmission = this.onFormSubmission.bind(this);
+    this.onFileAdd = this.onFileAdd.bind(this);
   }
 
   handleUploadFormChange(e) {
