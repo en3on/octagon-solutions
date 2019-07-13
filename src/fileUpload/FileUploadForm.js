@@ -2,7 +2,7 @@
 // The File Upload requests First Name, Last Name & Email & message
 
 import React from 'react';
-import {Form, Button} from 'react-bootstrap';
+import {Form, Button, ListGroup} from 'react-bootstrap';
 import './FileUpload.css';
 
 
@@ -25,7 +25,7 @@ class FileUpload extends React.Component {
   handleUploadFormChange(e) {
     this.setState({
       file: [...this.state.files, e.target.files[0]],
-      filename: e.target.files[0].name,
+      filename: [...this.state.filenames, e.target.files[0].name],
     });
   }
 
@@ -36,7 +36,7 @@ class FileUpload extends React.Component {
 
   submitHandler(e) {
     e.preventDefault();
-    // post data into db
+    console.log(this.state.files);
   }
 
   handleFormChange(e) {
@@ -59,6 +59,13 @@ class FileUpload extends React.Component {
           <Form.Group controlId="formFilesAddedLabel">
             <Form.Label>Your added files:</Form.Label>
           </Form.Group>
+          {this.state.files.map(file => {
+            return (
+              <ListGroup>
+                <ListGroup.Item variant="dark" key={file.name}>{file.name}</ListGroup.Item>
+              </ListGroup>
+            );
+          })}
           <Form.Group controlId="formDescription">
             <Form.Label>Description</Form.Label>
             <Form.Control as="textarea" rows="5" name="description" onChange={this.handleFormChange} />
