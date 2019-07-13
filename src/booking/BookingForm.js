@@ -12,7 +12,6 @@ class BookingForm extends React.Component {
     // retrieved from the API (i.e: ['Monday at 4:00PM', 'Tuesday at 3:00PM'])
     this.state = {
       availableTimes: [], 
-      selectedTime: '',
     };  
 
     this.submitHandler = this.submitHandler.bind(this);
