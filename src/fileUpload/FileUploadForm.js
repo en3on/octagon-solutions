@@ -10,11 +10,21 @@ class FileUpload extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      files: [],
+      filenames: [],
+      description: '',
+    };
 
     this.submitHandler = this.submitHandler.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
-  
+    this.handleUploadFormChange = this.handleUploadFormChange.bind(this); 
+    this.onFileAdd = this.onUpload.bind(this);
+    this.onFormSubmission = this.onFormSubmission.bind(this);
+  }
+
+  handleUploadFormChange(e) {
+    
   }
 
   submitHandler(e) {
