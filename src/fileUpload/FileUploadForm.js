@@ -27,6 +27,7 @@ class FileUpload extends React.Component {
       files: [...this.state.files, e.target.files[0]],
       filenames: [...this.state.filenames, e.target.files[0].name],
     });
+    e.target.value = '';
   }
 
   onFileAdd(e) {
@@ -54,7 +55,6 @@ class FileUpload extends React.Component {
           <Form.Group controlId="formFileUpload">
             <Form.Label>Upload Your Files</Form.Label>
             <Form.Control type="file" id="fileUploader" onChange={this.handleUploadFormChange} /> 
-            <Button variant="primary" id="fileAddButton" onClick={this.onFileAdd}>Add File</Button>
           </Form.Group>
           <Form.Group controlId="formFilesAddedLabel">
             <Form.Label>Your added files:</Form.Label>
