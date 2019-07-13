@@ -56,18 +56,17 @@ class FileUpload extends React.Component {
             <Form.Label>Upload Your Files</Form.Label>
             <Form.Control type="file" id="fileUploader" onChange={this.handleUploadFormChange} /> 
           </Form.Group>
-          <Form.Group controlId="formFilesAddedLabel">
-            <Form.Label>Your added files:</Form.Label>
-          </Form.Group>
-          {console.log(this.state.files)}
+          <div id="uploadedFilesLabel">
+            <span>Your Uploaded Files:</span>
+          </div>
           {this.state.files.map(file => {
             return (
-              <ListGroup>
-                <ListGroup.Item variant="dark" key={file.name}>{file.name}</ListGroup.Item>
+              <ListGroup key={file.name}>
+                <ListGroup.Item className="itemUpload" variant="dark" key={file.name}>{file.name}</ListGroup.Item>
               </ListGroup>
             );
           })}
-          <Form.Group controlId="formDescription">
+          <Form.Group classname="my-2" controlId="formDescription">
             <Form.Label>Description</Form.Label>
             <Form.Control as="textarea" rows="5" name="description" onChange={this.handleFormChange} />
           </Form.Group>
