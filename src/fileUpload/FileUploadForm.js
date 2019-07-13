@@ -50,10 +50,11 @@ class FileUpload extends React.Component {
   render() {
     return (
       <div className="form-component-container">
-        <Form className="file-upload-form" onSubmit={this.submitHandler}>
+        <Form className="file-upload-form">
           <Form.Group controlId="formFileUpload">
             <Form.Label>Upload Your Files</Form.Label>
-            <Form.Control type="file" /> 
+            <Form.Control type="file" id="fileUploader" onChange={this.handleUploadFormChange} /> 
+            <Button variant="primary" id="fileAddButton" onClick={this.onFileAdd}>Add File</Button>
           </Form.Group>
           <Form.Group controlId="formDescription">
             <Form.Label>Description</Form.Label>
