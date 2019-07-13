@@ -1,5 +1,5 @@
 // The Booking Form allows clients that have purchased packages to book a time with the accountant
-// The Booking form requests A Booking Time and a description of the booking
+// The Booking form requests a booking time and a description of the booking
 
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
@@ -8,8 +8,9 @@ import './BookingForm.css'
 class BookingForm extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {};
+    // assuming that the value of the available booking times are structured in an array format
+    // retrieved from the API (i.e: ['Monday at 4:00PM', 'Tuesday at 3:00PM'])
+    this.state = {availableTimes: ['Monday at 4:00PM', 'Tuesday at 3:00PM']};  
 
     this.submitHandler = this.submitHandler.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
@@ -18,7 +19,6 @@ class BookingForm extends React.Component {
 
   submitHandler(e) {
     e.preventDefault();
-    // post data into db
   }
 
   handleFormChange(e) {
@@ -46,12 +46,12 @@ class BookingForm extends React.Component {
         <Form className="booking-form" onSubmit={this.submitHandler}>
           <Form.Group controlId="formBookingTime">
             <Form.Label>Available Times to Book:</Form.Label>
-            <Form.Control as="select">
-              <option>1:00PM</option>
-              <option>2:00PM</option>
-              <option>3:00PM</option>
-              <option>4:00PM</option>
-              <option>5:00PM</option>
+            <Form.Control as="select" value={this.state.availableTimes} onChange={this.handleFormChange}>
+              {this.state.availableTimes.map((avaliableTime, idx) => {
+                return (
+                <option key={idx} value={avaliableTime}>{avaliableTime}</option>
+                );
+              })}
             </Form.Control>
           </Form.Group>
           <Form.Group controlId="formMessage">
