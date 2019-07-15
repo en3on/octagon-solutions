@@ -6,10 +6,10 @@ import UserProfileView from '../admin/UserProfileView';
 class AdminRoutes extends Component {
   render() {
     return (
-      <>
-        <Route path="/admin" component={AdminDashBoard} />
+      <Switch>
+        <Route exact path="/admin" component={AdminDashBoard} />
         <Route exact path="/admin/user/:id" component={UserProfileView} />
-      </>
+      </Switch>
     );
   }
 };
