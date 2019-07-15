@@ -1,8 +1,14 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
-class UserDashBoard extends Component {
-
+class UserDashboard extends Component {
+  render() {
+    return (
+      <div>
+        User UserDashBoard page!
+      </div>
+    )
+  }
 }
 
-export default UserDashBoard;
+export default UserDashboard;
