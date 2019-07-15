@@ -13,7 +13,6 @@ class FileUpload extends React.Component {
     this.state = {
       files: [],
       filenames: [],
-      description: '',
     };
 
     this.submitHandler = this.submitHandler.bind(this);
@@ -28,11 +27,6 @@ class FileUpload extends React.Component {
       filenames: [...this.state.filenames, e.target.files[0].name],
     });
     e.target.value = '';
-  }
-
-  onFileAdd(e) {
-    e.preventDefault();
-    document.querySelector('#fileUploader').value = '';
   }
 
   submitHandler(e) {
