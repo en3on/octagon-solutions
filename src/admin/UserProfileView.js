@@ -1,8 +1,13 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 
 class UserProfileView extends Component {
-
-}
+  render() {
+    return (
+      <div>
+        Hello from UserProfileView
+      </div>
+    );
+  }
+ }
 
 export default UserProfileView;
