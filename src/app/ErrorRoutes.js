@@ -5,7 +5,7 @@ import PageNotFound from '../app/PageNotFound';
 class ErrorRoutes extends Component {
   render() {
     return (
-      <Route component={PageNotFound} />
+        <Route component={PageNotFound} />
     );
   }
 };

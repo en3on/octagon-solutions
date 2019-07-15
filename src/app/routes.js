@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import RootRoutes from './RootRoutes';
 import UserRoutes from './UserRoutes';
-// import AdminRoutes from './AdminRoutes';
+import AdminRoutes from './AdminRoutes';
 // import BookingRoutes from './BookingRoutes';
-// import ErrorRoutes from './ErrorRoutes';
+import ErrorRoutes from './ErrorRoutes';
 
 
 class Routes extends Component {
@@ -12,9 +12,8 @@ class Routes extends Component {
       <>
         <RootRoutes />
         <UserRoutes />
-        {/* <AdminRoutes /> */}
+        <AdminRoutes />
         {/* <BookingRoutes /> */}
-        {/* <ErrorRoutes /> */}
       </>
     )
   }

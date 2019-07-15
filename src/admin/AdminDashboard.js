@@ -4,7 +4,7 @@ class AdminDashboard extends Component {
   render() {
     return (
       <div>
-        Hello from Admin AdminDashboard
+        Hello from AdminDashboard
       </div>
     );
   }
