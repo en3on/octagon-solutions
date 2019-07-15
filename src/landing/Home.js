@@ -4,7 +4,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        Hello!
+        Hello from Root/Index Page!
       </div>
     )
   }
