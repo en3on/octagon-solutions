@@ -18,7 +18,6 @@ class FileUpload extends React.Component {
     this.submitHandler = this.submitHandler.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleUploadFormChange = this.handleUploadFormChange.bind(this); 
-    this.onFileAdd = this.onFileAdd.bind(this);
   }
 
   handleUploadFormChange(e) {
@@ -32,6 +31,7 @@ class FileUpload extends React.Component {
   submitHandler(e) {
     e.preventDefault();
     console.log(this.state.files);
+    console.log(this.state.description);
   }
 
   handleFormChange(e) {
@@ -46,9 +46,9 @@ class FileUpload extends React.Component {
     return (
       <div className="form-component-container">
         <Form className="file-upload-form">
-          <Form.Group controlId="formFileUpload">
+          <Form.Group controlId="fileUploader">
             <Form.Label>Upload Your Files</Form.Label>
-            <Form.Control type="file" id="fileUploader" onChange={this.handleUploadFormChange} /> 
+            <Form.Control type="file" onChange={this.handleUploadFormChange} /> 
           </Form.Group>
           <div id="uploadedFilesLabel">
             <span>Your Uploaded Files:</span>
@@ -60,7 +60,7 @@ class FileUpload extends React.Component {
               </ListGroup>
             );
           })}
-          <Form.Group classname="my-2" controlId="formDescription">
+          <Form.Group className="my-2" controlId="formDescription">
             <Form.Label>Description</Form.Label>
             <Form.Control as="textarea" rows="5" name="description" onChange={this.handleFormChange} />
           </Form.Group>
