@@ -5,7 +5,8 @@ import SignInPage from '../user/SignInPage';
 import RegisterPage from '../user/RegisterPage';
 import UserProfileView from '../admin/UserProfileView';
 import PageNotFound from '../app/PageNotFound';
-import UserDashBoard from '../user/UserDashBoard';
+import UserDashBoard from '../user/UserDashboard';
+import AdminDashBoard from '../user/AdminDashboard';
 
 class Routes extends Component {
   render() {
@@ -15,8 +16,9 @@ class Routes extends Component {
         <Route path="/signin" component={SignInPage} />
         <Route path="/register" component={RegisterPage} />
         <Route path="/admin/user/:id" component={UserProfileView} />
+        <Route path="/admin" component={AdminDashBoard} />
         <Route path="/user/:id" component={UserDashBoard} />
-        <Route path="user/edit/:id/" component={EditUserForm} />
+        <Route path="user/edit/:id/" component={EditUserPage} />
         <Route component={PageNotFound} />
       </Switch>
     )
