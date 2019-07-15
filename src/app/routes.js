@@ -7,7 +7,7 @@ import UserDashBoard from '../user/UserDashboard';
 import EditUserPage from '../user/EditUserPage';
 import AdminDashBoard from '../admin/AdminDashboard';
 import UserProfileView from '../admin/UserProfileView';
-import PageNotFound from '../app/PageNotFound';
+import PageNotFound from './PageNotFound';
 
 class Routes extends Component {
   render() {
@@ -20,6 +20,8 @@ class Routes extends Component {
         <Route exact path="/user/edit/:id" component={EditUserPage} />
         <Route exact path="/admin" component={AdminDashBoard} />
         <Route exact path="/admin/user/:id" component={UserProfileView} />
+        { /* Add Bookings Routes at later task */ }
+        {/* Add Documents Routes at a later task  */}
         <Route component={PageNotFound} />
       </Switch>  
     )
