@@ -17,6 +17,7 @@ class SignInForm extends React.Component {
     this.submitHandler = this.submitHandler.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
     this.resetForm = this.resetForm.bind(this);
+    this.login = this.login.bind(this);
   }
 
   submitHandler(e) {
@@ -26,6 +27,14 @@ class SignInForm extends React.Component {
       'password': this.state.password,
     };
     this.login(data);
+  }
+
+  async login(payload) {
+    try {
+
+    } catch(exception) {
+
+    }
   }
 
   handleFormChange(e) {
