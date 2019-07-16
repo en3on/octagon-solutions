@@ -18,7 +18,6 @@ class RegisterForm extends Component {
     this.handleFormChange = this.handleFormChange.bind(this);
     this.passwordValidator = this.passwordValidator.bind(this);
     this.register = this.register.bind(this);
-    this.errorRenderHandler = this.errorRenderHandler.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -67,32 +66,16 @@ class RegisterForm extends Component {
     });
   }
 
-  errorRenderHandler(e) {
-    const {message, name, requirements} = this.state.errorResponse;
-    if(requirements) {
-      return (
-        <div>
-          Returned pure JSX!
-        </div>
-      )
-    } else {
-      return (
-        <div>
-          {message}
-          {name}
-        </div>
-      )
-    }
-  }
-
   render() {
     return (
       <div className="form-component-container">
-        <div>
-          {this.state.error ? this.state.error : null}
-          {console.log(this.state.authenticated)}
-        </div>
         <Form className="register-form" onSubmit={this.submitHandler}>
+          <div>
+            {this.state.errorResponse ? this.state.errorResponse.requirements ? 
+              'Returned pure JSX' 
+              : null 
+              : null}
+          </div>
           <Form.Group controlId="formFirstName">
             <Form.Label>First Name</Form.Label>
             <Form.Control type="text" name="firstName" onChange={this.handleFormChange} required />
