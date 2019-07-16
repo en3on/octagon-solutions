@@ -4,7 +4,9 @@
 
 import React, {Component} from 'react';
 import {Form, Button} from 'react-bootstrap';
-import "./RegisterForm.css"
+import axios from 'axios';
+import "./RegisterForm.css";
+
 
 class RegisterForm extends Component {
   constructor(props) {
@@ -29,7 +31,7 @@ class RegisterForm extends Component {
   
   submitHandler(e) {
     e.preventDefault();
-    // insert submission logic here
+
   }
 
   handleFormChange(e) {
