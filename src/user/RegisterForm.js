@@ -74,8 +74,7 @@ class RegisterForm extends Component {
             {
               this.state.errorResponse.requirements ? this.state.errorResponse.requirements.map((requirement, idx) => { return (
                 <li key={idx}>{requirement}</li>
-              )
-              }) : null
+              )}) : null
             }
           </div>
           <Form.Group controlId="formFirstName">
