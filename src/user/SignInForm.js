@@ -21,6 +21,11 @@ class SignInForm extends React.Component {
 
   submitHandler(e) {
     e.preventDefault();
+    const data = {
+      'email': this.state.email,
+      'password': this.state.password,
+    };
+    this.login(data);
   }
 
   handleFormChange(e) {
