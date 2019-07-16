@@ -18,6 +18,7 @@ class RegisterForm extends Component {
     this.handleFormChange = this.handleFormChange.bind(this);
     this.passwordValidator = this.passwordValidator.bind(this);
     this.register = this.register.bind(this);
+    this.errorRenderHandler = this.errorRenderHandler.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
