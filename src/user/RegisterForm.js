@@ -53,7 +53,7 @@ class RegisterForm extends Component {
       });
 
     } catch(exception) {   
-      console.log(exception);
+      console.log(exception.response.data);
     };
   }
 
