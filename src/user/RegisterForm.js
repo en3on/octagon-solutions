@@ -3,7 +3,7 @@
 // The sign up form then redirects the user to their personal dashboards
 
 import React, {Component} from 'react';
-import {Form, Button} from 'react-bootstrap';
+import {Form, Button, Alert} from 'react-bootstrap';
 import axios from 'axios';
 import "./RegisterForm.css";
 
@@ -70,13 +70,14 @@ class RegisterForm extends Component {
     return (
       <div className="form-component-container">
         <Form className="register-form" onSubmit={this.submitHandler}>
-          <div>
+          <Alert style={{display: `${this.state.errorResponse.message ? "block": "none"}` }} variant="danger">
+          {this.state.errorResponse.message ? this.state.errorResponse.message : null}
             {
               this.state.errorResponse.requirements ? this.state.errorResponse.requirements.map((requirement, idx) => { return (
                 <li key={idx}>{requirement}</li>
               )}) : null
             }
-          </div>
+          </Alert>
           <Form.Group controlId="formFirstName">
             <Form.Label>First Name</Form.Label>
             <Form.Control type="text" name="firstName" onChange={this.handleFormChange} required />
