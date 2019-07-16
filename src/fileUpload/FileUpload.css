@@ -1,0 +1,34 @@
+.form-component-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.file-upload-form {
+  border: .2rem solid #ececec;
+  padding: 1em;
+  width: 50%;
+  border-radius: 10px;
+}
+
+#fileAddButton {
+  margin-top: 10px;
+}
+
+.itemUpload {
+  margin-top: 5px;
+}
+
+#uploadedFilesLabel {
+  margin-bottom: 10px;
+}
+
+#formDescription {
+  margin-top: 5px;
+}
+
+.form-group {
+  margin-top: 12px;
+}
