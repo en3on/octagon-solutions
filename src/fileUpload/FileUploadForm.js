@@ -57,13 +57,17 @@ class FileUpload extends React.Component {
             return (
               <ListGroup key={file.name}>
                 <ListGroup.Item className="itemUpload" variant="dark" key={file.name}>{file.name}</ListGroup.Item>
+                <Form.Group className="my-2" controlId="formDescription">
+                  <Form.Label>{`Provide a Description of ${file.name}:`}</Form.Label>
+                  <Form.Control as="textarea" rows="3" name={`${file.name}Description`} />
+                </Form.Group>
               </ListGroup>
             );
           })}
-          <Form.Group className="my-2" controlId="formDescription">
+          {/* <Form.Group className="my-2" controlId="formDescription">
             <Form.Label>Description</Form.Label>
             <Form.Control as="textarea" rows="5" name="description" onChange={this.handleFormChange} />
-          </Form.Group>
+          </Form.Group> */}
           <Button variant="primary" id="fileSubmitButton" type="submit" onClick={this.submitHandler}>
             Submit
           </Button>
