@@ -68,7 +68,21 @@ class RegisterForm extends Component {
   }
 
   errorRenderHandler(e) {
-
+    const {message, name, requirements} = this.state.errorResponse;
+    if(requirements) {
+      return (
+        <div>
+          Returned pure JSX!
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          {message}
+          {name}
+        </div>
+      )
+    }
   }
 
   render() {
