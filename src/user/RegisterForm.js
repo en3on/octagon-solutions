@@ -71,11 +71,14 @@ class RegisterForm extends Component {
       <div className="form-component-container">
         <Form className="register-form" onSubmit={this.submitHandler}>
           <Alert style={{display: `${this.state.errorResponse.message ? "block": "none"}` }} variant="danger">
-          {this.state.errorResponse.message}
+            {this.state.errorResponse.message}
             {
-              this.state.errorResponse.requirements ? this.state.errorResponse.requirements.map((requirement, idx) => { return (
-                <li key={idx}>{requirement}</li>
-              )}) : null
+              this.state.errorResponse.requirements ? 
+              this.state.errorResponse.requirements.map((requirement, idx) => {
+                 return (
+                    <li key={idx}>{requirement}</li>
+                )}) 
+              : null
             }
           </Alert>
           <Form.Group controlId="formFirstName">
