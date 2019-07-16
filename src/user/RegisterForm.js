@@ -4,6 +4,7 @@
 
 import React, {Component} from 'react';
 import {Form, Button} from 'react-bootstrap';
+import "./RegisterForm.css"
 
 class RegisterForm extends Component {
   constructor(props) {
@@ -41,8 +42,7 @@ class RegisterForm extends Component {
   render() {
     return (
       <div className="form-component-container">
-        <h1>Sign Up!</h1>
-        <Form className="contact-form" onSubmit={this.submitHandler}>
+        <Form className="register-form" onSubmit={this.submitHandler}>
           <Form.Group controlId="formFirstName">
             <Form.Label>First Name</Form.Label>
             <Form.Control type="text" name="firstName" onChange={this.handleFormChange} required />
