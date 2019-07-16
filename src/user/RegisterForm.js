@@ -32,7 +32,13 @@ class RegisterForm extends Component {
   
   submitHandler(e) {
     e.preventDefault();
-    this.register(this.state);
+    const data = {
+      'firstName': this.state.firstName,
+      'lastName': this.state.lastName,
+      'email': this.state.email,
+      'password': this.state.password,
+    }
+    this.register(data);
   }
 
   async register(payload) {
@@ -46,11 +52,8 @@ class RegisterForm extends Component {
         authenticated: true,
       });
 
-    } catch(exception) { 
-      this.setState({
-        authenticated: false,
-        error: exception,
-      });
+    } catch(exception) {   
+      console.log(exception);
     };
   }
 
@@ -64,6 +67,10 @@ class RegisterForm extends Component {
   render() {
     return (
       <div className="form-component-container">
+        <div>
+          {this.state.error ? this.state.error : null}
+          {console.log(this.state.authenticated)}
+        </div>
         <Form className="register-form" onSubmit={this.submitHandler}>
           <Form.Group controlId="formFirstName">
             <Form.Label>First Name</Form.Label>
