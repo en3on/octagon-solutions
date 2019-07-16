@@ -12,11 +12,12 @@ class RegisterForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {authenticated: false};
 
     this.submitHandler = this.submitHandler.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
     this.passwordValidator = this.passwordValidator.bind(this);
+    this.register = this.register.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -31,7 +32,26 @@ class RegisterForm extends Component {
   
   submitHandler(e) {
     e.preventDefault();
+    this.register(this.state);
+  }
 
+  async register(payload) {
+    try {
+      const response = await axios.post('http://localhost:5000/auth/register', payload);
+      const token = response.data.token;
+
+      localStorage.setItem('token', token);
+
+      this.setState({
+        authenticated: true,
+      });
+
+    } catch(exception) { 
+      this.setState({
+        authenticated: false,
+        error: exception,
+      });
+    };
   }
 
   handleFormChange(e) {
