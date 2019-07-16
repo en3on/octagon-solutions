@@ -53,8 +53,10 @@ class RegisterForm extends Component {
       });
 
     } catch(exception) {   
-      console.log(exception.response.data);
-    };
+      this.setState({
+        errorResponse: exception.response.data.error,
+      })
+    }; 
   }
 
   handleFormChange(e) {
@@ -62,6 +64,10 @@ class RegisterForm extends Component {
     this.setState({
       [currentTarget.name]: currentTarget.value,
     });
+  }
+
+  errorRenderHandler(e) {
+
   }
 
   render() {
