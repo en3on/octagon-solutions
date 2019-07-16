@@ -4,6 +4,7 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
 import "./SignInForm.css";
+import axios from 'axios';
 
 class SignInForm extends React.Component {
   constructor(props) {
@@ -31,10 +32,18 @@ class SignInForm extends React.Component {
 
   async login(payload) {
     try {
+      const response = await axios.post('http://localhost:5000/auth/login', payload);
+      const token = response.data.token;
+
+      localStorage.setItem('loginToken', token);
+      
+      // add a redirect route
 
     } catch(exception) {
-
-    }
+      this.setState({
+        errorResponse: exception.response.data.error,
+      });
+    };
   }
 
   handleFormChange(e) {
