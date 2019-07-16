@@ -12,7 +12,7 @@ class RegisterForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {authenticated: false};
+    this.state = {authenticated: false, errorResponse: {}};
 
     this.submitHandler = this.submitHandler.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
@@ -71,10 +71,12 @@ class RegisterForm extends Component {
       <div className="form-component-container">
         <Form className="register-form" onSubmit={this.submitHandler}>
           <div>
-            {this.state.errorResponse ? this.state.errorResponse.requirements ? 
-              'Returned pure JSX' 
-              : null 
-              : null}
+            {
+              this.state.errorResponse.requirements ? this.state.errorResponse.requirements.map((requirement, idx) => { return (
+                <li key={idx}>{requirement}</li>
+              )
+              }) : null
+            }
           </div>
           <Form.Group controlId="formFirstName">
             <Form.Label>First Name</Form.Label>
