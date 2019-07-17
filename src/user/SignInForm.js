@@ -29,11 +29,15 @@ class SignInForm extends React.Component {
   async login(payload) {
     try {
       const response = await axios.post('http://localhost:5000/auth/login', payload);
-      const token = response.data.token;
+      const {token, message} = response.data;
 
       localStorage.setItem('loginToken', token)
 
-      this.setState({ authenticated: true })
+      this.setState({
+        authenticated: true,
+        successMessage: message,
+        errorResponse: '',
+      });
       // add a redirect route
 
     } catch(exception) {
@@ -56,14 +60,15 @@ class SignInForm extends React.Component {
       return (
         <div className="form-component-container">
           <Form className="sign-in-form" onSubmit={this.submitHandler}>
-            {this.state.errorResponse.message && 
-            <Alert variant="danger">
+            {(this.state.errorResponse.message || this.state.authenticated) && 
+            <Alert variant={`${this.state.authenticated ? "success" : "danger"}`}>
               {this.state.errorResponse.message}
+              {this.state.successMessage}
             </Alert>}
-            {this.state.authenticated && 
+            {/* {this.state.authenticated && 
             <Alert variant="success" >
               Successfully logged in!
-            </Alert>}
+            </Alert>} */}
             <Form.Group controlId="formEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" name="email" onChange={this.handleFormChange} />
