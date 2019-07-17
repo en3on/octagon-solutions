@@ -10,14 +10,10 @@ class SignInForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      email: '',
-      password: '',
-    };
+    this.state = {};
 
     this.submitHandler = this.submitHandler.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
-    this.resetForm = this.resetForm.bind(this);
     this.login = this.login.bind(this);
   }
 
@@ -54,13 +50,6 @@ class SignInForm extends React.Component {
     });
   }
 
-  // special reset method that resets the entire state for user convenience
-  resetForm() {
-    this.setState({
-      email: '',
-      password: '',
-    })
-  }
 
   render() {
       return (
@@ -76,9 +65,6 @@ class SignInForm extends React.Component {
             </Form.Group>
             <Button variant="primary" id="signInSubmitButton" type="submit" onClick={this.submitHandler}>
               Login
-            </Button>
-            <Button className="mx-2" variant="secondary" id="reset-button" type="reset" onClick={this.resetForm}>
-              Reset
             </Button>
           </Form>
         </div>
