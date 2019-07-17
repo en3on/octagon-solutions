@@ -21,7 +21,10 @@ class RegisterForm extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.confirmPassword !== this.state.confirmPassword) this.passwordValidator();
+    const passChange = prevState.password !== this.state.password;
+    const confPassChange = prevState.confirmPassword !== this.state.confirmPassword;
+    
+    (passChange || confPassChange) && this.passwordValidator();
   }
 
   passwordValidator() {
@@ -70,17 +73,12 @@ class RegisterForm extends Component {
     return (
       <div className="form-component-container">
         <Form className="register-form" onSubmit={this.submitHandler}>
-          <Alert style={{display: `${this.state.errorResponse.message ? "block": "none"}` }} variant="danger">
-            {this.state.errorResponse.message}
-            {
-              this.state.errorResponse.requirements ? 
-              this.state.errorResponse.requirements.map((requirement, idx) => {
-                 return (
-                    <li key={idx}>{requirement}</li>
-                )}) 
-              : null
-            }
-          </Alert>
+            {this.state.errorResponse.message && 
+            <Alert variant="danger">
+              {this.state.errorResponse.message}
+              {this.state.errorResponse.requirements && 
+                this.state.errorResponse.requirements.map((requirement, idx) => <li key={idx}>{requirement}</li>)}
+            </Alert>}
           <Form.Group controlId="formFirstName">
             <Form.Label>First Name</Form.Label>
             <Form.Control type="text" name="firstName" onChange={this.handleFormChange} required />
