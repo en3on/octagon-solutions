@@ -65,7 +65,6 @@ class SignInForm extends React.Component {
   render() {
       return (
         <div className="form-component-container">
-          <h1>Sign In To Your Account</h1>
           <Form className="sign-in-form" onSubmit={this.submitHandler}>
             <Form.Group controlId="formEmail">
               <Form.Label>Email</Form.Label>
