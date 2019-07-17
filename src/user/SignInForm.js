@@ -65,10 +65,6 @@ class SignInForm extends React.Component {
               {this.state.errorResponse.message}
               {this.state.successMessage}
             </Alert>}
-            {/* {this.state.authenticated && 
-            <Alert variant="success" >
-              Successfully logged in!
-            </Alert>} */}
             <Form.Group controlId="formEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" name="email" onChange={this.handleFormChange} />
