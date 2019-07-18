@@ -19,8 +19,8 @@ class Routes extends Component {
         <Route path="/register" component={RegisterPage} />
         <Route path="/user">
           <Route path="/:id">
-            <Route path="edit" component={EditUserPage} />
-            <Route path="documents" component={DocumentsPage} />
+            <Route path="/edit" component={EditUserPage} />
+            <Route path="/documents" component={DocumentsPage} />
             <Route path="/" component={UserDashBoard} />
           </Route>
           <Route path="/:id/edit" component={EditUserPage} />
@@ -30,8 +30,8 @@ class Routes extends Component {
           <Route path="/user/:id" component={UserProfileView} />
           <Route path="/" component={AdminDashBoard} />
         </Route>
-        <Route component={PageNotFound} />
         <Route path="/" component={Home} />
+        <Route component={PageNotFound} />
       </Switch>
     )
   }
