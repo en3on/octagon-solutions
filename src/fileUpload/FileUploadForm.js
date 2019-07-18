@@ -1,12 +1,12 @@
 // File Upload for clients to file the administrator.
 // The File Upload requests First Name, Last Name & Email & message
 
-import React from 'react';
+import React, {Component} from 'react';
 import {Form, Button, ListGroup} from 'react-bootstrap';
 import './FileUpload.css';
 
 
-class FileUpload extends React.Component {
+class FileUpload extends Component {
   constructor(props) {
     super(props);
 
