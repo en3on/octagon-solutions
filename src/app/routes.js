@@ -14,14 +14,13 @@ class Routes extends Component {
     return (
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/signin" component={SignInPage} />
-        <Route exact path="/register" component={RegisterPage} />
-        <Route exact path="/user/:id" component={UserDashBoard} />
-        <Route exact path="/user/edit/:id" component={EditUserPage} />
-        <Route exact path="/admin" component={AdminDashBoard} />
-        <Route exact path="/admin/user/:id" component={UserProfileView} />
-        { /* Add Bookings Routes at later task */ }
-        {/* Add Documents Routes at a later task  */}
+        <Route path="/signin" component={SignInPage} />
+        <Route path="/user/:id" component={UserDashBoard} />
+        <Route path="/user/edit/:id" component={EditUserPage} />
+        <Route path="/register" component={RegisterPage} />
+        <Route path="/admin" component={AdminDashBoard} />
+        <Route path="/admin/user/:id" component={UserProfileView} />
+
         <Route component={PageNotFound} />
       </Switch>  
     )
