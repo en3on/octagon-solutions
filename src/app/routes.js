@@ -10,6 +10,18 @@ import UserProfileView from '../admin/UserProfileView';
 import PageNotFound from './PageNotFound';
 
 class Routes extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      authToken: localStorage.getItem('loginToken'),
+    }
+  }
+  
+  componentDidMount() {
+    this.setState({authToken: localStorage.getItem('loginToken')})
+  }
+
   render() {
     return (
       <Switch>
