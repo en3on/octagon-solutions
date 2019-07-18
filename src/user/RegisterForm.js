@@ -46,12 +46,15 @@ class RegisterForm extends Component {
 
   async register(payload) {
     try {
-      const response = await axios.post(process.env.REACT_APP_API_URL + '/auth/login', payload);
+      const response = await axios.post(process.env.REACT_APP_API_URL + '/auth/register', payload);
       const token = response.data.token;
 
       localStorage.setItem('token', token);
 
-      this.setState({authenticated: true});
+      this.setState({
+        authenticated: true,
+        errorResponse: '',
+      });
 
     } catch(exception) {   
       this.setState({
