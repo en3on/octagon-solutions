@@ -60,10 +60,6 @@ class FileUpload extends React.Component {
               </ListGroup>
             );
           })}
-          {/* <Form.Group className="my-2" controlId="formDescription">
-            <Form.Label>Description</Form.Label>
-            <Form.Control as="textarea" rows="5" name="description" onChange={this.handleFormChange} />
-          </Form.Group> */}
           <Button variant="primary" id="fileSubmitButton" type="submit" onClick={this.submitHandler}>
             Submit
           </Button>
