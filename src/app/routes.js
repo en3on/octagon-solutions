@@ -8,19 +8,9 @@ import EditUserPage from '../user/EditUserPage';
 import AdminDashBoard from '../admin/AdminDashboard';
 import UserProfileView from '../admin/UserProfileView';
 import PageNotFound from './PageNotFound';
+import DocumentsPage from '../fileUpload/DocumentsPage';
 
 class Routes extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      authToken: localStorage.getItem('loginToken'),
-    }
-  }
-  
-  componentDidMount() {
-    this.setState({authToken: localStorage.getItem('loginToken')})
-  }
 
   render() {
     return (
@@ -31,6 +21,7 @@ class Routes extends Component {
         <Route path="/user">
           <Route path="/:id" component={UserDashBoard} />
           <Route path="/:id/edit" component={EditUserPage} />
+          <Route path="/:id/documents" component={DocumentsPage} />
         </Route>
         <Route path="/admin">
           <Route path="/" component={AdminDashBoard} />
