@@ -5,7 +5,7 @@
 import React, {Component} from 'react';
 import {Form, Button, Alert} from 'react-bootstrap';
 import axios from 'axios';
-import "./RegisterForm.css";
+import './RegisterForm.css';
 
 
 class RegisterForm extends Component {
@@ -46,14 +46,12 @@ class RegisterForm extends Component {
 
   async register(payload) {
     try {
-      const response = await axios.post('http://localhost:5000/auth/register', payload);
+      const response = await axios.post(process.env.REACT_APP_API_URL + '/auth/login', payload);
       const token = response.data.token;
 
       localStorage.setItem('token', token);
 
-      this.setState({
-        authenticated: true,
-      });
+      this.setState({authenticated: true});
 
     } catch(exception) {   
       this.setState({
