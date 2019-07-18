@@ -27,14 +27,17 @@ class Routes extends Component {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/signin" component={SignInPage} />
-        <Route path="/user/:id" component={UserDashBoard} />
-        <Route path="/user/edit/:id" component={EditUserPage} />
         <Route path="/register" component={RegisterPage} />
-        <Route path="/admin" component={AdminDashBoard} />
-        <Route path="/admin/user/:id" component={UserProfileView} />
-
+        <Route path="/user">
+          <Route path="/:id" component={UserDashBoard} />
+          <Route path="/:id/edit" component={EditUserPage} />
+        </Route>
+        <Route path="/admin">
+          <Route path="/" component={AdminDashBoard} />
+          <Route path="/admin/user/:id" component={UserProfileView} />
+        </Route>
         <Route component={PageNotFound} />
-      </Switch>  
+      </Switch>
     )
   }
 }
