@@ -63,13 +63,13 @@ class FileUpload extends Component {
     return (
       <div className="form-component-container">
         <Form className="file-upload-form">
+        <div id="fileNotFound">
+          {this.state.errorMessage && <Alert variant="danger">Please upload your files and enter a description</Alert>}
+        </div>
           <Form.Group controlId="fileUploader">
             <Form.Label>Upload Your Files</Form.Label>
             <Form.Control type="file" onChange={this.handleUploadFormChange} required /> 
           </Form.Group>
-          <div id="fileNotFound">
-            {this.state.errorMessage && <Alert variant="danger">Please upload your files and enter a description</Alert>}
-          </div>
           <div id="uploadedFilesLabel">
             <span>Your Uploaded Files:</span>
           </div>
