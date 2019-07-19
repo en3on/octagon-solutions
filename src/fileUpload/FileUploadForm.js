@@ -2,7 +2,7 @@
 // The File Upload requests First Name, Last Name & Email & message
 
 import React, {Component} from 'react';
-import {Form, Button, ListGroup} from 'react-bootstrap';
+import {Form, Button, ListGroup, Alert} from 'react-bootstrap';
 import './FileUpload.css';
 
 
@@ -18,12 +18,14 @@ class FileUpload extends Component {
     this.submitHandler = this.submitHandler.bind(this);
     this.handleUploadFormChange = this.handleUploadFormChange.bind(this); 
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    this.descriptionChecker = this.descriptionChecker.bind(this);
   }
 
   handleUploadFormChange(e) {
     this.setState({
       files: [...this.state.files, {file: e.target.files[0], description: ''}],
       filenames: [...this.state.filenames, e.target.files[0].name],
+      errorMessage: '',
     });
     e.target.value = '';
   }
@@ -31,11 +33,30 @@ class FileUpload extends Component {
   handleDescriptionChange(e) {
     const files = this.state.files.slice();
     files[e.target.name].description = e.target.value;
-    this.setState({files});
+    this.setState({
+      files,
+      errorMessage: '',
+    });
+  }
+
+  descriptionChecker(ary) {
+    for(let e = 0; e < ary.length; e++) {
+      if(ary[e].description === '') {
+        return false;
+      }
+    }
+    return true;
   }
 
   submitHandler(e) {
     e.preventDefault();
+    if(this.state.files.length !== 0 && this.descriptionChecker(this.state.files)) {
+      console.log('submitted');
+      this.setState({inSumbit: true});
+    } else {
+      this.setState({errorMessage: "Please upload your files and enter a description"});
+      console.log('not submitted');
+    };
   }
 
   render() {
@@ -44,8 +65,11 @@ class FileUpload extends Component {
         <Form className="file-upload-form">
           <Form.Group controlId="fileUploader">
             <Form.Label>Upload Your Files</Form.Label>
-            <Form.Control type="file" onChange={this.handleUploadFormChange} /> 
+            <Form.Control type="file" onChange={this.handleUploadFormChange} required /> 
           </Form.Group>
+          <div id="fileNotFound">
+            {this.state.errorMessage && <Alert variant="danger">Please upload your files and enter a description</Alert>}
+          </div>
           <div id="uploadedFilesLabel">
             <span>Your Uploaded Files:</span>
           </div>
@@ -60,7 +84,7 @@ class FileUpload extends Component {
               </ListGroup>
             );
           })}
-          <Button variant="primary" id="fileSubmitButton" type="submit" onClick={this.submitHandler}>
+          <Button variant="primary" id="fileSubmitButton" type="submit" onClick={this.submitHandler} disabled={this.state.inSumbit}>
             Submit
           </Button>
         </Form>
