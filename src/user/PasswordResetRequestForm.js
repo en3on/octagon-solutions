@@ -21,24 +21,36 @@ class PasswordResetRequestForm extends Component {
 
   submitHandler(e) {
     e.preventDefault();
+    this.setState({ submitted: true });
   }
 
   render() {
-    return (
-      <div className="form-component-container">
-        <Form className="register-form">
-          <Form.Group controlId="emailAddress">
-            <Form.Label>Email Address:</Form.Label>
-            <Form.Control type="email" name="email" onChange={this.handleFormChange} required />
-          </Form.Group>
-          <Button variant="primary" id="passwordResetRequestButton" type="submit" onClick={this.submitHandler}>
-            Reset Password
-          </Button>
-        </Form>
-      </div>
-    )
+    if(this.state.submitted) {
+      return (
+        <div className="form-component-container">
+          <div className="register-form">
+            <Alert variant="success">
+              Thanks! Please check your email for instructions on how to create a new password.
+            </Alert>
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div className="form-component-container">
+          <Form className="register-form">
+            <Form.Group controlId="emailAddress">
+              <Form.Label>Email Address:</Form.Label>
+              <Form.Control type="email" name="email" onChange={this.handleFormChange} required />
+            </Form.Group>
+            <Button variant="primary" id="passwordResetRequestButton" type="submit" onClick={this.submitHandler}>
+              Reset Password
+            </Button>
+          </Form>
+        </div>
+      )
+    }
   }
-
 }
 
 export default PasswordResetRequestForm;
