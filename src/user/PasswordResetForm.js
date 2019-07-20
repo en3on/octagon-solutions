@@ -22,9 +22,19 @@ class PasswordResetForm extends Component {
 
   render() {
     return (
-      <div>
-        
-      </div>
+        <div className="form-component-container">
+          <Form className="register-form" onSubmit={this.submitHandler}>
+            <Form.Group controlId="newPassword">
+
+            </Form.Group>
+            <Form.Group controlId="confirmPassword">
+
+            </Form.Group>
+            <Button variant="primary" id="passwordResetSubmitButton" type="submit" onClick={this.submitHandler}>
+              Reset Password
+            </Button>
+          </Form>
+        </div>
     )
   }
 }
