@@ -25,10 +25,12 @@ class PasswordResetForm extends Component {
         <div className="form-component-container">
           <Form className="register-form" onSubmit={this.submitHandler}>
             <Form.Group controlId="newPassword">
-
+              <Form.Label>New Password:</Form.Label>
+              <Form.Control type="text" name="newPassword" onChange={this.handleFormChange} required />
             </Form.Group>
             <Form.Group controlId="confirmPassword">
-
+              <Form.Label>Confirm Password:</Form.Label>
+              <Form.Control type="text" name="confirmPassword" onChange={this.handleFormChange} required />
             </Form.Group>
             <Button variant="primary" id="passwordResetSubmitButton" type="submit" onClick={this.submitHandler}>
               Reset Password
