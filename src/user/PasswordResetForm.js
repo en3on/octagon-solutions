@@ -24,6 +24,13 @@ class PasswordResetForm extends Component {
     });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const passChange = prevState.newPassword !== this.state.newPassword;
+    const confPassChange =  prevState.confirmPassword !== this.state.confirmPassword;
+
+    (passChange || confPassChange) && this.passwordValidator();
+  }
+
   passwordValidator() {
     this.setState({
       errorMessage: this.state.newPassword === this.state.confirmPassword ? '' : 'Your password does not match'
@@ -36,12 +43,13 @@ class PasswordResetForm extends Component {
           <Form className="register-form" onSubmit={this.submitHandler}>
             <Form.Group controlId="newPassword">
               <Form.Label>New Password:</Form.Label>
-              <Form.Control type="text" name="newPassword" onChange={this.handleFormChange} required />
+              <Form.Control type="password" name="newPassword" onChange={this.handleFormChange} required />
             </Form.Group>
             <Form.Group controlId="confirmPassword">
               <Form.Label>Confirm Password:</Form.Label>
-              <Form.Control type="text" name="confirmPassword" onChange={this.handleFormChange} required />
+              <Form.Control type="password" name="confirmPassword" onChange={this.handleFormChange} required />
             </Form.Group>
+            {this.state.errorMessage && <Alert variant="danger">{this.state.errorMessage}</Alert>}
             <Button variant="primary" id="passwordResetSubmitButton" type="submit" onClick={this.submitHandler}>
               Reset Password
             </Button>
