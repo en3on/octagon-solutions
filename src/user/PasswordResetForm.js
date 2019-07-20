@@ -13,11 +13,14 @@ class PasswordResetForm extends Component {
   }
 
   submitHandler(e) {
-
+    return;
   }
 
   handleFormChange(e) {
-
+    const {currentTarget} = e;
+    this.setState({
+      [currentTarget.name]: currentTarget.value,
+    });
   }
 
   render() {

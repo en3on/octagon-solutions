@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import './App.css';
-import SignInForm from '../user/SignInForm';
+import PasswordResetForm from '../user/PasswordResetForm';
 
 
 class App extends Component {
   render() {
     return (
     <div>
-
+      <PasswordResetForm />
     </div>
     );
   };
