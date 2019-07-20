@@ -10,6 +10,7 @@ class PasswordResetForm extends Component {
     this.state = {};
     this.submitHandler = this.submitHandler.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
+    this.passwordValidator = this.passwordValidator.bind(this);
   }
 
   submitHandler(e) {
@@ -20,6 +21,12 @@ class PasswordResetForm extends Component {
     const {currentTarget} = e;
     this.setState({
       [currentTarget.name]: currentTarget.value,
+    });
+  }
+
+  passwordValidator() {
+    this.setState({
+      errorMessage: this.state.newPassword === this.state.confirmPassword ? '' : 'Your password does not match'
     });
   }
 
