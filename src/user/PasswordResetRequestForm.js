@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Form, Button, Alert} from 'react-bootstrap';
-import './RegisterForm.css';
+import './UserFormStyles.css';
 
 class PasswordResetRequestForm extends Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class PasswordResetRequestForm extends Component {
     if(this.state.submitted) {
       return (
         <div className="form-component-container">
-          <div className="register-form">
+          <div className="outer-form">
             <Alert variant="success">
               Thanks! Please check your email for instructions on how to create a new password.
             </Alert>
@@ -38,7 +38,7 @@ class PasswordResetRequestForm extends Component {
     } else {
       return (
         <div className="form-component-container">
-          <Form className="register-form">
+          <Form className="outer-form">
             <Form.Group controlId="emailAddress">
               <Form.Label>Email Address:</Form.Label>
               <Form.Control type="email" name="email" onChange={this.handleFormChange} required />
