@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Form, Alert} from 'react-bootstrap';
+import {Form, Alert, Button} from 'react-bootstrap';
+import './RegisterForm.css';
 
 class PasswordResetRequestForm extends Component {
   constructor(props) {
@@ -12,17 +13,25 @@ class PasswordResetRequestForm extends Component {
   }
 
   handleFormChange(e) {
-
+    return;
   }
 
   submitHandler(e) {
-
+    return;
   }
 
   render() {
     return (
-      <div>
-        
+      <div className="form-component-container">
+        <Form className="register-form">
+          <Form.Group controlId="emailAddress">
+            <Form.Label>Your Current Email Address:</Form.Label>
+            <Form.Control type="email" name="email" onChange={this.handleFormChange} required />
+          </Form.Group>
+          <Button variant="primary" id="passwordResetRequestButton" type="submit" onClick={this.submitHandler}>
+            Reset Password
+          </Button>
+        </Form>
       </div>
     )
   }
