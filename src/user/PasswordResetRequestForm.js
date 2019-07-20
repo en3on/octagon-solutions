@@ -20,7 +20,7 @@ class PasswordResetRequestForm extends Component {
   }
 
   submitHandler(e) {
-    return;
+    e.preventDefault();
   }
 
   render() {
