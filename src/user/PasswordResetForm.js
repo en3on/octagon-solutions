@@ -13,7 +13,7 @@ class PasswordResetForm extends Component {
   }
 
   submitHandler(e) {
-    return;
+    e.preventDefault();
   }
 
   handleFormChange(e) {
