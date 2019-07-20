@@ -12,12 +12,12 @@ class RegisterForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {authenticated: false, errorResponse: {}};
+    this.state = {};
 
     this.submitHandler = this.submitHandler.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
     this.passwordValidator = this.passwordValidator.bind(this);
-    this.register = this.register.bind(this);
+    // this.register = this.register.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -41,7 +41,7 @@ class RegisterForm extends Component {
       'email': this.state.email,
       'password': this.state.password,
     }
-    this.register(data);
+    this.props.onSubmission(data);
   }
 
   async register(payload) {
@@ -72,14 +72,7 @@ class RegisterForm extends Component {
 
   render() {
     return (
-      <div className="form-component-container">
         <Form className="register-form" onSubmit={this.submitHandler}>
-            {this.state.errorResponse.message && 
-            <Alert variant="danger">
-              {this.state.errorResponse.message}
-              {this.state.errorResponse.requirements && 
-                this.state.errorResponse.requirements.map((requirement, idx) => <li key={idx}>{requirement}</li>)}
-            </Alert>}
           <Form.Group controlId="formFirstName">
             <Form.Label>First Name</Form.Label>
             <Form.Control type="text" name="firstName" onChange={this.handleFormChange} required />
@@ -107,7 +100,6 @@ class RegisterForm extends Component {
             Submit
           </Button>
         </Form>
-      </div>
     )
   }
 } 

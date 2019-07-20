@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Alert} from 'react-bootstrap';
-import "./SignInForm.css";
+import './RegisterForm.css';
 import axios from 'axios';
+import RegisterForm from './RegisterForm';
 
 class UserEditPage extends Component {
   constructor(props) {
@@ -9,22 +10,38 @@ class UserEditPage extends Component {
 
     this.state = {authenticated: false, errorResponse: {}};
 
-    this.register = this.register.bind(this);
+    this.editDetailsHandler = this.editDetailsHandler.bind(this);
   }
 
-  login(payload) {
+  async editDetailsHandler(payload) {
+    try {
+      const response = await axios.post(process.env.REACT_APP_API_URL + '/auth/register', payload);
+      const token = response.data.token;
 
+      localStorage.setItem('token', token);
+
+      this.setState({
+        authenticated: true,
+        errorResponse: '',
+      });
+
+    } catch(exception) {   
+      this.setState({
+        errorResponse: exception.response.data.error,
+      })
+    }; 
   }
 
   render() {
     return (
       <div className="form-component-container">
-        {(this.state.errorResponse.message || this.state.authenticated) && 
-        <Alert variant={`${this.state.authenticated ? "success" : "danger"}`}>
+        {this.state.errorResponse.message && 
+        <Alert variant="danger" className="alertStyle">
           {this.state.errorResponse.message}
-          {this.state.successMessage}
-        </Alert>}  
-        
+          {this.state.errorResponse.requirements && 
+            this.state.errorResponse.requirements.map((requirement, idx) => <li key={idx}>{requirement}</li>)}
+        </Alert>}
+        <RegisterForm onSubmission={this.editDetailsHandler} />        
       </div>
     );
   };
