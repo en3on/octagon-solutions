@@ -4,16 +4,16 @@ import axios from 'axios';
 import './UserEditPage.css';
 import RegisterForm from './RegisterForm';
 
-class UserEditPage extends Component {
+class RegisterPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {authenticated: false, errorResponse: {}};
 
-    this.editDetailsHandler = this.editDetailsHandler.bind(this);
+    this.register = this.register.bind(this);
   }
 
-  async editDetailsHandler(payload) {
+  async register(payload) {
     try {
       const response = await axios.post(process.env.REACT_APP_API_URL + '/auth/register', payload);
       const {status: responseStatus} = response;
@@ -47,15 +47,15 @@ class UserEditPage extends Component {
             this.state.requirements.map((requirement, idx) => <li key={idx}>{requirement}</li>)}
         </Alert>}
         <RegisterForm 
-        onSubmission={this.editDetailsHandler} 
+        onSubmission={this.register} 
         firstName="Joe" 
         lastName="West" 
         email="joe.west@ccpd.gov"
-        submitButton="Edit Details" 
+        submitButton="Register" 
         />
       </div>
     );
   };
 }
 
-export default UserEditPage;
+export default RegisterPage;

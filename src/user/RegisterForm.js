@@ -19,6 +19,15 @@ class RegisterForm extends Component {
     // this.register = this.register.bind(this);
   }
 
+  componentDidMount() {
+    const {firstName, lastName, email} = this.props;
+    this.setState({
+      firstName,
+      lastName,
+      email,
+    })
+  }
+
   componentDidUpdate(prevProps, prevState) {
     const passChange = prevState.password !== this.state.password;
     const confPassChange = prevState.confirmPassword !== this.state.confirmPassword;
@@ -55,15 +64,15 @@ class RegisterForm extends Component {
         <Form className="register-form" onSubmit={this.submitHandler}>
           <Form.Group controlId="formFirstName">
             <Form.Label>First Name</Form.Label>
-            <Form.Control type="text" name="firstName" onChange={this.handleFormChange} required />
+            <Form.Control type="text" name="firstName" value={this.state.firstName} onChange={this.handleFormChange} required />
           </Form.Group>
           <Form.Group controlId="formLastName">
             <Form.Label>Last Name</Form.Label>
-            <Form.Control type="text" name="lastName" onChange={this.handleFormChange} required />
+            <Form.Control type="text" name="lastName" value={this.state.lastName} onChange={this.handleFormChange} required />
           </Form.Group>
           <Form.Group controlId="formEmail">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="email" name="email" onChange={this.handleFormChange} required />
+            <Form.Control type="email" name="email" value={this.state.email} onChange={this.handleFormChange} required />
           </Form.Group>
           <Form.Group controlId="formPassword">
             <Form.Label>Password</Form.Label>
@@ -77,7 +86,7 @@ class RegisterForm extends Component {
           </Form.Group>
 
           <Button variant="primary" id="registerSubmitButton" type="submit" onClick={this.submitHandler}>
-            Submit
+            {this.props.submitButton}
           </Button>
         </Form>
     )
