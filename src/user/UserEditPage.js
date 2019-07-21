@@ -16,18 +16,23 @@ class UserEditPage extends Component {
   async editDetailsHandler(payload) {
     try {
       const response = await axios.post(process.env.REACT_APP_API_URL + '/auth/register', payload);
-      const token = response.data.token;
+      const {status: responseStatus} = response;
+      const {message : responseMessage, token} = response.data;
 
       localStorage.setItem('token', token);
 
       this.setState({
         authenticated: true,
-        errorResponse: '',
+        responseMessage,
+        responseStatus,
+        requirements: '',
       });
 
-    } catch(exception) {   
+    } catch(exception) {
+      const {message : responseMessage, requirements} = exception.response.data.error;
       this.setState({
-        errorResponse: exception.response.data.error,
+        responseMessage,
+        requirements
       })
     }; 
   }
@@ -35,11 +40,11 @@ class UserEditPage extends Component {
   render() {
     return (
       <div className="form-component-container">
-        {this.state.errorResponse.message && 
-        <Alert variant="danger" className="alertStyle">
-          {this.state.errorResponse.message}
-          {this.state.errorResponse.requirements && 
-            this.state.errorResponse.requirements.map((requirement, idx) => <li key={idx}>{requirement}</li>)}
+        {this.state.responseMessage && 
+        <Alert variant={this.state.responseStatus === 201 ? "success" : "danger"} className="alertStyle">
+          {this.state.responseMessage}
+          {this.state.requirements && 
+            this.state.requirements.map((requirement, idx) => <li key={idx}>{requirement}</li>)}
         </Alert>}
         <RegisterForm 
         onSubmission={this.editDetailsHandler} 
