@@ -44,25 +44,6 @@ class RegisterForm extends Component {
     this.props.onSubmission(data);
   }
 
-  async register(payload) {
-    try {
-      const response = await axios.post(process.env.REACT_APP_API_URL + '/auth/register', payload);
-      const token = response.data.token;
-
-      localStorage.setItem('token', token);
-
-      this.setState({
-        authenticated: true,
-        errorResponse: '',
-      });
-
-    } catch(exception) {   
-      this.setState({
-        errorResponse: exception.response.data.error,
-      })
-    }; 
-  }
-
   handleFormChange(e) {
     const {currentTarget} = e;
     this.setState({
@@ -75,15 +56,15 @@ class RegisterForm extends Component {
         <Form className="register-form" onSubmit={this.submitHandler}>
           <Form.Group controlId="formFirstName">
             <Form.Label>First Name</Form.Label>
-            <Form.Control type="text" name="firstName" onChange={this.handleFormChange} required />
+            <Form.Control type="text" name="firstName" value={this.props.firstName} onChange={this.handleFormChange} required />
           </Form.Group>
           <Form.Group controlId="formLastName">
             <Form.Label>Last Name</Form.Label>
-            <Form.Control type="text" name="lastName" onChange={this.handleFormChange} required />
+            <Form.Control type="text" name="lastName" value={this.props.lastName} onChange={this.handleFormChange} required />
           </Form.Group>
           <Form.Group controlId="formEmail">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="email" name="email" onChange={this.handleFormChange} required />
+            <Form.Control type="email" name="email" value={this.props.email} onChange={this.handleFormChange} required />
           </Form.Group>
           <Form.Group controlId="formPassword">
             <Form.Label>Password</Form.Label>

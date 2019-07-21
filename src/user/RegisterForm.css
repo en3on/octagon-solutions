@@ -1,18 +1,3 @@
-.form-component-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: .2rem solid #ececec;
-  padding: 1em;
-  width: 50%;
-  border-radius: 10px;
-}
-
-.alertStyle {
-  width: 90%;
-}
-
 .register-form {
   width: 100%;
 }

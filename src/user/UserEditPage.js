@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Alert} from 'react-bootstrap';
-import './RegisterForm.css';
+import './UserEditPage.css';
 import axios from 'axios';
 import RegisterForm from './RegisterForm';
 
@@ -41,7 +41,12 @@ class UserEditPage extends Component {
           {this.state.errorResponse.requirements && 
             this.state.errorResponse.requirements.map((requirement, idx) => <li key={idx}>{requirement}</li>)}
         </Alert>}
-        <RegisterForm onSubmission={this.editDetailsHandler} />        
+        <RegisterForm 
+        onSubmission={this.editDetailsHandler} 
+        firstName="David" 
+        lastName="Peterson" 
+        email="david.peterson@gmail.com" 
+        />        
       </div>
     );
   };
