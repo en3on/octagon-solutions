@@ -17,7 +17,7 @@ class Routes extends Component {
         <Route path="/register" component={RegisterPage} />
         <Route exact path="/" component={Home} />
         <Route 
-          path="/user/:id" 
+          path={["/user/:id", "/admin/"]} 
           render={(routeProps) => (
             <ProtectedRoutes {...routeProps} {...{authToken}} />
           )}  

@@ -4,6 +4,8 @@ import UserDashBoard from '../user/UserDashboard';
 import EditUserPage from '../user/EditUserPage';
 import DocumentsPage from '../fileUpload/DocumentsPage'; 
 import PageNotFound from './PageNotFound';
+import UserProfileView from '../admin/UserProfileView';
+import AdminDashboard from '../admin/AdminDashboard';
 
 class ProtectedRoutes extends Component {
   constructor(props) {
@@ -12,6 +14,7 @@ class ProtectedRoutes extends Component {
     this.state = { authToken: this.props.authToken }
 
     this.Users = this.Users.bind(this);
+    this.Admin = this.Admin.bind(this);
   }
 
   Users({match}) {
@@ -25,10 +28,23 @@ class ProtectedRoutes extends Component {
     )
   }
 
+  Admin({match}) {
+    return (
+      <Switch>
+        <Route path={`${match.url}/user/:id`} component={UserProfileView} />
+        <Route exact path={match.path} component={AdminDashboard} />
+        <Route component={PageNotFound} />
+      </Switch>
+    )
+  }
+
+
   render() {
     if(this.state.authToken) {
       return (
-        <Route component={this.Users} />
+        <>
+        {this.props.match.path.includes('admin') ? <Route component={this.Admin} /> : <Route component={this.Users} />}
+        </>
       )
     } else {
       return (
