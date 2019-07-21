@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Alert} from 'react-bootstrap';
-import './UserEditPage.css';
 import axios from 'axios';
+import './UserEditPage.css';
 import RegisterForm from './RegisterForm';
 
 class UserEditPage extends Component {
