@@ -1,7 +1,12 @@
+// The Register Page is the page where people register for the site
+// It imports all the current styles and adds the register form component (which is completely modular)
+// it handles the logic of posting from the front-end to the back-end and receives responses
+// which are displayed onto the screen.
+
 import React, {Component} from 'react';
 import {Alert} from 'react-bootstrap';
 import axios from 'axios';
-import './UserEditPage.css';
+import './RegisterPage.css';
 import RegisterForm from './RegisterForm';
 
 class RegisterPage extends Component {
@@ -48,9 +53,6 @@ class RegisterPage extends Component {
         </Alert>}
         <RegisterForm 
         onSubmission={this.register} 
-        firstName="Joe" 
-        lastName="West" 
-        email="joe.west@ccpd.gov"
         submitButton="Register" 
         />
       </div>
