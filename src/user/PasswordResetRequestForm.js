@@ -38,7 +38,7 @@ class PasswordResetRequestForm extends Component {
     } else {
       return (
         <div className="form-component-container">
-          <Form className="outer-form">
+          <Form className="outer-form" onSubmit={this.submitHandler}>
             <Form.Group controlId="emailAddress">
               <Form.Label>Email Address:</Form.Label>
               <Form.Control type="email" name="email" onChange={this.handleFormChange} required />
