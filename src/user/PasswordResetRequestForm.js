@@ -27,10 +27,15 @@ class PasswordResetRequestForm extends Component {
       return
     }
     // insert logic when posting email
-    this.setState({
-    responseMessage: '', 
-    submitted: true,
-    });
+    try {
+
+    } catch(exception) {
+
+    }
+    // this.setState({
+    // responseMessage: '', 
+    // submitted: true,
+    // });
   }
 
   render() {
