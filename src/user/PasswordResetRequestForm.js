@@ -22,6 +22,15 @@ class PasswordResetRequestForm extends Component {
 
   submitHandler(e) {
     e.preventDefault();
+    if(!this.state.email) {
+      this.setState({responseMessage: 'The email field cannot be empty'});
+      return
+    }
+    // insert logic when posting email
+    this.setState({
+    responseMessage: '', 
+    submitted: true,
+    });
   }
 
   render() {
@@ -39,11 +48,15 @@ class PasswordResetRequestForm extends Component {
       return (
         <div className="form-component-container">
           <Form className="outer-form" onSubmit={this.submitHandler}>
+          {this.state.responseMessage &&
+          <Alert variant="danger">
+            {this.state.responseMessage}
+          </Alert>}
             <Form.Group controlId="emailAddress">
               <Form.Label>Email Address:</Form.Label>
               <Form.Control type="email" name="email" onChange={this.handleFormChange} required />
             </Form.Group>
-            <Button variant="primary" id="passwordResetRequestButton" type="submit" onClick={this.submitHandler}>
+            <Button variant="primary" id="passwordResetRequestButton" type="submit" disabled={this.state.submitted} onClick={this.submitHandler}>
               Reset Password
             </Button>
           </Form>
