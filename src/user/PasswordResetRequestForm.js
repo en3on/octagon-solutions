@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 import {Form, Button, Alert} from 'react-bootstrap';
 import './UserFormStyles.css';
-import { reset } from 'ansi-colors';
 
 class PasswordResetRequestForm extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class PasswordResetRequestForm extends Component {
     
     this.handleFormChange = this.handleFormChange.bind(this);
     this.submitHandler = this.submitHandler.bind(this);
-    this.inSubmission = this.inSubmission.bind(this);
+    this.resetPassword = this.resetPassword.bind(this);
   }
 
   handleFormChange(e) {
@@ -28,30 +28,41 @@ class PasswordResetRequestForm extends Component {
       this.setState({responseMessage: 'The email field cannot be empty'});
       return
     }
-    const data = {'email': email};
+    const data = {'email': this.state.email};
     this.setState({inSubmission: true})
-    resetPassword(data);
+    this.resetPassword(data);
   }
 
-  resetPassword(payload) {
+  async resetPassword(payload) {
     try {
+      const response = await axios.post(process.env.REACT_APP_API_URL + '/auth/forgot', payload)
+      const {status : responseStatus} = response;
+      
+      this.setState({
+        responseStatus,
+        responseMessage: '',
+        submitted: true,
+      });
 
     } catch(exception) {
-      
+      const{message : responseMessage} = exception.response.data.error;
+      this.setState({
+        responseMessage,
+        inSubmission: false,
+      })
     }
   }
-    // this.setState({
-    // responseMessage: '', 
-    // submitted: true,
-    // }); 
 
   render() {
     if(this.state.submitted) {
       return (
         <div className="form-component-container">
           <div className="outer-form">
-            <Alert variant="success">
-              Thanks! Please check your email for instructions on how to create a new password.
+            <Alert className="text-centered" variant="success">
+              Thanks! <br /> Please check your email for instructions on how to create a new password.
+              <div className="link-container">
+                <Link to="/home">Return To Home</Link>
+              </div>
             </Alert>
           </div>
         </div>
