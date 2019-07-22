@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import {Form, Button, Alert} from 'react-bootstrap';
 import './UserFormStyles.css';
 
@@ -21,7 +22,6 @@ class PasswordResetRequestForm extends Component {
 
   submitHandler(e) {
     e.preventDefault();
-    this.setState({ submitted: true });
   }
 
   render() {
