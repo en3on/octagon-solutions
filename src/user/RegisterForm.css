@@ -1,14 +1,3 @@
-.form-component-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
 .register-form {
-  border: .2rem solid #ececec;
-  padding: 1em;
-  width: 50%;
-  border-radius: 10px;
+  width: 100%;
 }
