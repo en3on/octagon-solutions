@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {Form, Button, Alert} from 'react-bootstrap';
 import './UserFormStyles.css';
+import { reset } from 'ansi-colors';
 
 class PasswordResetRequestForm extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class PasswordResetRequestForm extends Component {
     
     this.handleFormChange = this.handleFormChange.bind(this);
     this.submitHandler = this.submitHandler.bind(this);
+    this.inSubmission = this.inSubmission.bind(this);
   }
 
   handleFormChange(e) {
@@ -26,17 +28,22 @@ class PasswordResetRequestForm extends Component {
       this.setState({responseMessage: 'The email field cannot be empty'});
       return
     }
-    // insert logic when posting email
+    const data = {'email': email};
+    this.setState({inSubmission: true})
+    resetPassword(data);
+  }
+
+  resetPassword(payload) {
     try {
 
     } catch(exception) {
-
+      
     }
+  }
     // this.setState({
     // responseMessage: '', 
     // submitted: true,
-    // });
-  }
+    // }); 
 
   render() {
     if(this.state.submitted) {
@@ -61,7 +68,7 @@ class PasswordResetRequestForm extends Component {
               <Form.Label>Email Address:</Form.Label>
               <Form.Control type="email" name="email" onChange={this.handleFormChange} required />
             </Form.Group>
-            <Button variant="primary" id="passwordResetRequestButton" type="submit" disabled={this.state.submitted} onClick={this.submitHandler}>
+            <Button variant="primary" id="passwordResetRequestButton" type="submit" disabled={this.state.inSubmission} onClick={this.submitHandler}>
               Reset Password
             </Button>
           </Form>
