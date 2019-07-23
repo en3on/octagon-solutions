@@ -3,7 +3,7 @@
 
 import React, {Component} from 'react';
 import {Form, Button, ListGroup, Alert} from 'react-bootstrap';
-import axiosFileUpload from './axiosFileUpload';
+import axios from 'axios';
 import './FileUpload.css';
 
 
@@ -73,13 +73,21 @@ class FileUpload extends Component {
       formData.append('description', fileObj.description)
       formDataAry.push(formData)
     })
-    const data = {'files': formDataAry};
+    const data = formDataAry;
     this.fileUploader(data);
   }
 
   async fileUploader(payload) {
     try {
-      const response = await axiosFileUpload.post('/documents/upload', payload)
+      const response = await axios({
+        method: 'post',
+        url: process.env.REACT_APP_API_URL + '/documents/upload',
+        data: payload,
+        headers: {
+        'token': `${localStorage.getItem('loginToken')}`,
+        'content-type': `multipart/form-data; boundary=${payload._boundary}`,
+        },
+    });
       const {status: responseStatus} = response; 
 
       this.setState({responseStatus});
