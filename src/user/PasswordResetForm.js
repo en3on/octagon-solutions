@@ -22,7 +22,8 @@ class PasswordResetForm extends Component {
       'authString': authString,
       'newPassword': this.state.newPassword,
     };
-    this.resetPassword(data);
+    // this.resetPassword(data);
+    this.setState({responseStatus: 201});
   }
 
   handleFormChange(e) {
@@ -66,7 +67,12 @@ class PasswordResetForm extends Component {
   render() {
     if(this.state.responseStatus === 201) {
       return (
-        <Redirect to="/signin" />
+        <Redirect
+        to={{
+          pathname: "/signin",
+          state: { arriveForgotPage: true }
+        }}
+        />
       )
     }
     return (
