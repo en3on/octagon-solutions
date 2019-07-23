@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Routes from './Routes';
+import NavigationBar from './NavigationBar';
 
 class App extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class App extends Component {
     const {auth} = this.state;
     return (
       <div>
+        <NavigationBar />
         <Routes authToken={auth} />
       </div>
     );
