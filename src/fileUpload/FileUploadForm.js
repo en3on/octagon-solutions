@@ -19,8 +19,8 @@ class FileUpload extends Component {
     this.handleUploadFormChange = this.handleUploadFormChange.bind(this); 
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.descriptionChecker = this.descriptionChecker.bind(this);
-    this.fileUploader = this.fileUploader.bind(this);
     this.formDataHandler = this.formDataHandler.bind(this);
+    this.fileUploader = this.fileUploader.bind(this);
   }
 
   handleUploadFormChange(e) {
