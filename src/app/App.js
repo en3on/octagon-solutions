@@ -1,13 +1,19 @@
 import React, {Component} from 'react';
 import './App.css';
-
+import Routes from './Routes';
 
 class App extends Component {
-  render() {
-    return (
-    <div>
+  constructor(props) {
+    super(props);
 
-    </div>
+    this.state = {auth: localStorage.getItem('loginToken')}
+  }
+  render() {
+    const {auth} = this.state;
+    return (
+      <div>
+        <Routes authToken={auth} />
+      </div>
     );
   };
 }

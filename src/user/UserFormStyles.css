@@ -12,3 +12,10 @@
   width: 50%;
   border-radius: 10px;
 }
+
+.link-container {
+  margin: 10px 0 0 0;
+  text-align: center;
+}
+
+.text-centered { text-align: center  }
