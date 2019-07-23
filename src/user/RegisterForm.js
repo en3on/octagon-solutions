@@ -4,6 +4,8 @@
 
 import React, {Component} from 'react';
 import {Form, Button} from 'react-bootstrap';
+import './RegisterForm.css';
+
 
 class RegisterForm extends Component {
   constructor(props) {
@@ -14,10 +16,23 @@ class RegisterForm extends Component {
     this.submitHandler = this.submitHandler.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
     this.passwordValidator = this.passwordValidator.bind(this);
+    // this.register = this.register.bind(this);
+  }
+
+  componentDidMount() {
+    const {firstName, lastName, email} = this.props;
+    this.setState({
+      firstName,
+      lastName,
+      email,
+    })
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.confirmPassword !== this.state.confirmPassword) this.passwordValidator();
+    const passChange = prevState.password !== this.state.password;
+    const confPassChange = prevState.confirmPassword !== this.state.confirmPassword;
+    
+    (passChange || confPassChange) && this.passwordValidator();
   }
 
   passwordValidator() {
@@ -28,7 +43,13 @@ class RegisterForm extends Component {
   
   submitHandler(e) {
     e.preventDefault();
-    // insert submission logic here
+    const data = {
+      'firstName': this.state.firstName,
+      'lastName': this.state.lastName,
+      'email': this.state.email,
+      'password': this.state.password,
+    }
+    this.props.onSubmission(data);
   }
 
   handleFormChange(e) {
@@ -40,20 +61,18 @@ class RegisterForm extends Component {
 
   render() {
     return (
-      <div className="form-component-container">
-        <h1>Sign Up!</h1>
-        <Form className="contact-form" onSubmit={this.submitHandler}>
+        <Form className="register-form" onSubmit={this.submitHandler}>
           <Form.Group controlId="formFirstName">
             <Form.Label>First Name</Form.Label>
-            <Form.Control type="text" name="firstName" onChange={this.handleFormChange} required />
+            <Form.Control type="text" name="firstName" value={this.state.firstName} onChange={this.handleFormChange} required />
           </Form.Group>
           <Form.Group controlId="formLastName">
             <Form.Label>Last Name</Form.Label>
-            <Form.Control type="text" name="lastName" onChange={this.handleFormChange} required />
+            <Form.Control type="text" name="lastName" value={this.state.lastName} onChange={this.handleFormChange} required />
           </Form.Group>
           <Form.Group controlId="formEmail">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="email" name="email" onChange={this.handleFormChange} required />
+            <Form.Control type="email" name="email" value={this.state.email} onChange={this.handleFormChange} required />
           </Form.Group>
           <Form.Group controlId="formPassword">
             <Form.Label>Password</Form.Label>
@@ -67,10 +86,9 @@ class RegisterForm extends Component {
           </Form.Group>
 
           <Button variant="primary" id="registerSubmitButton" type="submit" onClick={this.submitHandler}>
-            Submit
+            {this.props.submitButton}
           </Button>
         </Form>
-      </div>
     )
   }
 } 
