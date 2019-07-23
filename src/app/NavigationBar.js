@@ -6,10 +6,10 @@ class NavigationBar extends Component {
   render() {
     return (
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           <img
           alt=""
-          src="https://react-bootstrap.netlify.com/logo.svg"
+          src=""
           width="30"
           height="30"
           className="d-inline-block align-top"
@@ -20,11 +20,12 @@ class NavigationBar extends Component {
           <Nav className="mr-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/register">Register</Nav.Link>
-            <Nav.Link href="/signin">Sign In</Nav.Link>
+            {!(this.props.isAuthenticated) && <Nav.Link href="/signin">Sign In</Nav.Link>}
             <Nav.Link href="/contact">Contact</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link>My Account</Nav.Link>
+            {this.props.isAuthenticated &&
+            <Nav.Link><Link to="/user/1">My Account</Link></Nav.Link>}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
