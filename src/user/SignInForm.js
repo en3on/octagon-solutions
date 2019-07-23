@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {Form, Button, Alert} from 'react-bootstrap';
-import "./SignInForm.css";
+// import "./SignInForm.css";
 import axios from 'axios';
 
 class SignInForm extends React.Component {
@@ -15,6 +15,13 @@ class SignInForm extends React.Component {
     this.submitHandler = this.submitHandler.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
     this.login = this.login.bind(this);
+  }
+
+  componentDidMount() {
+    if(this.props.location.state) {
+      const {arriveForgotPage} = this.props.location.state;
+      this.setState({arriveForgotPage})
+    }
   }
 
   submitHandler(e) {
@@ -60,6 +67,7 @@ class SignInForm extends React.Component {
       return (
         <div className="form-component-container">
           <Form className="sign-in-form" onSubmit={this.submitHandler}>
+            {this.state.arriveForgotPage !== undefined && <Alert variant="success"> Password successfully reset. Please login.</Alert>}
             {(this.state.errorResponse.message || this.state.authenticated) && 
             <Alert variant={`${this.state.authenticated ? "success" : "danger"}`}>
               {this.state.errorResponse.message}
