@@ -3,6 +3,7 @@
 
 import React, {Component} from 'react';
 import {Form, Button, ListGroup, Alert} from 'react-bootstrap';
+import axios from 'axios';
 import './FileUpload.css';
 
 
@@ -77,7 +78,7 @@ class FileUpload extends Component {
   }
 
   fileUploader(payload) {
-    return;
+    
   }
 
   render() {
