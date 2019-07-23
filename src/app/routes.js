@@ -5,6 +5,7 @@ import SignInPage from '../user/SignInPage';
 import RegisterPage from '../user/RegisterPage';
 import PageNotFound from './PageNotFound';
 import ProtectedRoutes from './ProtectedRoutes';
+import PasswordResetForm from '../user/PasswordResetForm';
 
 
 class Routes extends Component {
@@ -15,6 +16,7 @@ class Routes extends Component {
       <Switch>
         <Route path="/signin" component={SignInPage} />
         <Route path="/register" component={RegisterPage} />
+        <Route path="/forgot/:authString" component={PasswordResetForm} /> 
         <Route exact path="/" component={Home} />
         <Route 
           path={["/user/:id", "/admin/"]} 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Form, Button, Alert} from 'react-bootstrap';
+import {Redirect} from 'react-router-dom';
 import './UserFormStyles.css';
 
 class PasswordResetForm extends Component {
@@ -16,7 +17,11 @@ class PasswordResetForm extends Component {
 
   submitHandler(e) {
     e.preventDefault();
-    const data = {password: this.state.newPassword}; // also add in the authString which will come from this.props.match.params
+    const {authString} = this.props.match.params; 
+    const data = {
+      'authString': authString,
+      'newPassword': this.state.newPassword,
+    };
     this.resetPassword(data);
   }
 
@@ -59,6 +64,11 @@ class PasswordResetForm extends Component {
   }
 
   render() {
+    if(this.state.responseStatus === 201) {
+      return (
+        <Redirect to="/signin" />
+      )
+    }
     return (
         <div className="form-component-container">
           <Form className="outer-form" onSubmit={this.submitHandler}>
