@@ -11,10 +11,13 @@ class PasswordResetForm extends Component {
     this.submitHandler = this.submitHandler.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
     this.passwordValidator = this.passwordValidator.bind(this);
+    this.resetPassword = this.resetPassword.bind(this);
   }
 
   submitHandler(e) {
     e.preventDefault();
+    const data = {password: this.state.newPassword}; // also add in the authString which will come from this.props.match.params
+    this.resetPassword(data);
   }
 
   handleFormChange(e) {
@@ -35,6 +38,11 @@ class PasswordResetForm extends Component {
     this.setState({
       errorMessage: this.state.newPassword === this.state.confirmPassword ? '' : 'Your password does not match'
     });
+  }
+
+  async resetPassword(payload) {
+    const response = await axios.post(process.env.REACT_APP_API_URL + '/auth/passwordChange', payload);
+    
   }
 
   render() {
