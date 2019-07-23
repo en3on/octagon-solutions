@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
 import Home from '../landing/Home';
 import SignInPage from '../user/SignInPage';
+import ContactForm from '../contact/ContactForm';
 import RegisterPage from '../user/RegisterPage';
 import PageNotFound from './PageNotFound';
 import ProtectedRoutes from './ProtectedRoutes';
@@ -15,6 +16,7 @@ class Routes extends Component {
       <Switch>
         <Route path="/signin" component={SignInPage} />
         <Route path="/register" component={RegisterPage} />
+        <Route path="/contact" component={ContactForm} />
         <Route exact path="/" component={Home} />
         <Route 
           path={["/user/:id", "/admin/"]} 
