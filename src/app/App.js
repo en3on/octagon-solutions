@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Routes from './Routes';
+import Footer from './Footer';
 
 class App extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class App extends Component {
     return (
       <div>
         <Routes authToken={auth} />
+        <Footer />
       </div>
     );
   };
