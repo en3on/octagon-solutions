@@ -66,8 +66,15 @@ class FileUpload extends Component {
   formDataHandler(filesAry) {
     const formDataAry = [];
     filesAry.forEach(() => formDataAry.push(new FormData()));
-    console.log(formDataAry);
-    
+    formDataAry.forEach((formDataObj) => {
+      filesAry.forEach((fileObj) => {
+        formDataObj.append('file', fileObj.file)
+        formDataObj.append('description', fileObj.description)
+        console.log('added')
+      })
+    })
+    console.log(formDataAry[0].get('file'));
+    console.log(formDataAry[0].get('description'));
     // payload.forEach((fileObj) => {
     //   formData.append('file', fileObj.file)
     //   formData.append('description', fileObj.description)
