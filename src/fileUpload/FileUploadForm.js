@@ -3,6 +3,7 @@
 
 import React, {Component} from 'react';
 import {Form, Button, ListGroup, Alert} from 'react-bootstrap';
+// import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import './FileUpload.css';
 
@@ -59,6 +60,7 @@ class FileUpload extends Component {
     } else {
       this.setState({errorMessage: "Please upload your files and enter a description"});
       console.log('not submitted');
+      return
     };
     const filesAry = this.state.files;
     this.formDataHandler(filesAry);
@@ -73,8 +75,7 @@ class FileUpload extends Component {
       formData.append('description', fileObj.description)
       formDataAry.push(formData)
     })
-    const data = formDataAry;
-    this.fileUploader(data);
+    this.fileUploader(formDataAry);
   }
 
   async fileUploader(payload) {
@@ -91,22 +92,29 @@ class FileUpload extends Component {
       const {status: responseStatus} = response; 
 
       this.setState({responseStatus});
-      console.log('succeeded');
+      console.log('succeeded', responseStatus);
 
     } catch(exception) {
-        const {message : responseMessage} = exception.response.data.error;
-        this.setState({responseMessage});
-        console.log(responseMessage);
-        console.log('failed');
+        const {message : errorMessage} = exception.response.data.error;
+        this.setState({errorMessage});
+        console.log('failed', errorMessage);
     }
   }
 
   render() {
+    // if(this.state.responseStatus === 201) {
+    //   return (
+    //     <Redirect to="/user/:id" /> 
+    //   )
+    // };
     return (
       <div className="form-component-container">
         <Form className="file-upload-form">
-        <div id="fileNotFound">
-          {this.state.errorMessage && <Alert variant="danger">Please upload your files and enter a description</Alert>}
+        <div id="fie-uploading">
+          {this.state.inSumbit && <Alert variant="success">Uploading Files. Please Wait.</Alert>}
+        </div>  
+        <div id="file-not-found">
+          {this.state.errorMessage && <Alert variant="danger">{this.state.errorMessage}</Alert>}
         </div>
           <Form.Group controlId="fileUploader">
             <Form.Label>Upload Your Files</Form.Label>
