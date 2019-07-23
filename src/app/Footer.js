@@ -6,7 +6,7 @@ import './Footer.css';
 class Footer extends Component {
   render() {
     return (
-      <Navbar className="bg-dark justify-content-between py-3 margin-content-3">
+      <Navbar className="bg-dark justify-content-between py-3 margin-content-3" fixed="bottom">
         <Nav className="justify-content-center" activeKey="/home">
           <Nav.Item>
           </Nav.Item>
