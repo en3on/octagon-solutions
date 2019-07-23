@@ -19,6 +19,7 @@ class FileUpload extends Component {
     this.handleUploadFormChange = this.handleUploadFormChange.bind(this); 
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.descriptionChecker = this.descriptionChecker.bind(this);
+    this.fileUploader = this.fileUploader.bind(this);
   }
 
   handleUploadFormChange(e) {
@@ -57,6 +58,10 @@ class FileUpload extends Component {
       this.setState({errorMessage: "Please upload your files and enter a description"});
       console.log('not submitted');
     };
+  }
+
+  fileUploader(payload) {
+    
   }
 
   render() {
