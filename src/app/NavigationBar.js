@@ -9,7 +9,7 @@ class NavigationBar extends Component {
         <Navbar.Brand href="/">
           <img
           alt=""
-          src=""
+          src="" // insert image here
           width="30"
           height="30"
           className="d-inline-block align-top"
@@ -19,6 +19,7 @@ class NavigationBar extends Component {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/about">About</Nav.Link>
             <Nav.Link href="/register">Register</Nav.Link>
             {!(this.props.isAuthenticated) && <Nav.Link href="/signin">Sign In</Nav.Link>}
             <Nav.Link href="/contact">Contact</Nav.Link>
