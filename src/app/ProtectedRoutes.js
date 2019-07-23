@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import UserDashBoard from '../user/UserDashboard';
-import EditUserPage from '../user/EditUserPage';
+import UserEditPage from '../user/UserEditPage';
 import DocumentsPage from '../fileUpload/DocumentsPage'; 
+import fileUploadForm from '../fileUpload/FileUploadForm';  
 import PageNotFound from './PageNotFound';
 import UserProfileView from '../admin/UserProfileView';
 import AdminDashboard from '../admin/AdminDashboard';
@@ -20,7 +21,8 @@ class ProtectedRoutes extends Component {
   Users({match}) {
     return (
       <Switch>
-        <Route path={`${match.path}/edit`} component={EditUserPage} />
+        <Route path={`${match.path}/edit`} component={UserEditPage} />
+        <Route path={`${match.path}/documents/upload`} component={fileUploadForm} />
         <Route path={`${match.path}/documents`} component={DocumentsPage} />
         <Route exact path={match.path} component={UserDashBoard} />
         <Route component={PageNotFound} />
