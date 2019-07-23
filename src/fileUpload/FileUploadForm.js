@@ -3,7 +3,7 @@
 
 import React, {Component} from 'react';
 import {Form, Button, ListGroup, Alert} from 'react-bootstrap';
-import axios from 'axios';
+import axiosFileUpload from './axiosFileUpload';
 import './FileUpload.css';
 
 
@@ -77,8 +77,20 @@ class FileUpload extends Component {
     this.fileUploader(data);
   }
 
-  fileUploader(payload) {
-    
+  async fileUploader(payload) {
+    try {
+      const response = await axiosFileUpload.post('/documents/upload', payload)
+      const {status: responseStatus} = response; 
+
+      this.setState({responseStatus});
+      console.log('succeeded');
+
+    } catch(exception) {
+        const {message : responseMessage} = exception.response.data.error;
+        this.setState({responseMessage});
+        console.log(responseMessage);
+        console.log('failed');
+    }
   }
 
   render() {
