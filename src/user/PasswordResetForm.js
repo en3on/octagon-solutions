@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import {Form, Button, Alert} from 'react-bootstrap';
-import './RegisterForm.css';
-
+import './UserFormStyles.css';
 
 class PasswordResetForm extends Component {
   constructor(props) {
@@ -41,14 +41,31 @@ class PasswordResetForm extends Component {
   }
 
   async resetPassword(payload) {
-    const response = await axios.post(process.env.REACT_APP_API_URL + '/auth/passwordChange', payload);
+    try {
+      const response = await axios.post(process.env.REACT_APP_API_URL + '/auth/passwordChange', payload);
+      const {status: responseStatus} = response;
+
+      this.setState({
+        responseStatus,
+      });
+
+    } catch(exception) {
+      const {message : responseMessage} = exception.response.data.error;
     
+      this.setState({
+        responseMessage,
+      });
+    };
   }
 
   render() {
     return (
         <div className="form-component-container">
-          <Form className="register-form" onSubmit={this.submitHandler}>
+          <Form className="outer-form" onSubmit={this.submitHandler}>
+            {this.state.responseMessage && 
+            <Alert variant="danger">
+                {this.state.responseMessage}
+            </Alert>}
             <Form.Group controlId="newPassword">
               <Form.Label>New Password:</Form.Label>
               <Form.Control type="password" name="newPassword" onChange={this.handleFormChange} required />

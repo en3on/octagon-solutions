@@ -3,8 +3,7 @@
 // The sign up form then redirects the user to their personal dashboards
 
 import React, {Component} from 'react';
-import {Form, Button, Alert} from 'react-bootstrap';
-import axios from 'axios';
+import {Form, Button} from 'react-bootstrap';
 import './RegisterForm.css';
 
 
@@ -12,12 +11,21 @@ class RegisterForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {authenticated: false, errorResponse: {}};
+    this.state = {};
 
     this.submitHandler = this.submitHandler.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
     this.passwordValidator = this.passwordValidator.bind(this);
-    this.register = this.register.bind(this);
+    // this.register = this.register.bind(this);
+  }
+
+  componentDidMount() {
+    const {firstName, lastName, email} = this.props;
+    this.setState({
+      firstName,
+      lastName,
+      email,
+    })
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -41,26 +49,7 @@ class RegisterForm extends Component {
       'email': this.state.email,
       'password': this.state.password,
     }
-    this.register(data);
-  }
-
-  async register(payload) {
-    try {
-      const response = await axios.post(process.env.REACT_APP_API_URL + '/auth/register', payload);
-      const token = response.data.token;
-
-      localStorage.setItem('token', token);
-
-      this.setState({
-        authenticated: true,
-        errorResponse: '',
-      });
-
-    } catch(exception) {   
-      this.setState({
-        errorResponse: exception.response.data.error,
-      })
-    }; 
+    this.props.onSubmission(data);
   }
 
   handleFormChange(e) {
@@ -72,25 +61,18 @@ class RegisterForm extends Component {
 
   render() {
     return (
-      <div className="form-component-container">
         <Form className="register-form" onSubmit={this.submitHandler}>
-            {this.state.errorResponse.message && 
-            <Alert variant="danger">
-              {this.state.errorResponse.message}
-              {this.state.errorResponse.requirements && 
-                this.state.errorResponse.requirements.map((requirement, idx) => <li key={idx}>{requirement}</li>)}
-            </Alert>}
           <Form.Group controlId="formFirstName">
             <Form.Label>First Name</Form.Label>
-            <Form.Control type="text" name="firstName" onChange={this.handleFormChange} required />
+            <Form.Control type="text" name="firstName" value={this.state.firstName} onChange={this.handleFormChange} required />
           </Form.Group>
           <Form.Group controlId="formLastName">
             <Form.Label>Last Name</Form.Label>
-            <Form.Control type="text" name="lastName" onChange={this.handleFormChange} required />
+            <Form.Control type="text" name="lastName" value={this.state.lastName} onChange={this.handleFormChange} required />
           </Form.Group>
           <Form.Group controlId="formEmail">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="email" name="email" onChange={this.handleFormChange} required />
+            <Form.Control type="email" name="email" value={this.state.email} onChange={this.handleFormChange} required />
           </Form.Group>
           <Form.Group controlId="formPassword">
             <Form.Label>Password</Form.Label>
@@ -104,10 +86,9 @@ class RegisterForm extends Component {
           </Form.Group>
 
           <Button variant="primary" id="registerSubmitButton" type="submit" onClick={this.submitHandler}>
-            Submit
+            {this.props.submitButton}
           </Button>
         </Form>
-      </div>
     )
   }
 } 
