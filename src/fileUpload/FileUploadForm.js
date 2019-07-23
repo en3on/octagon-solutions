@@ -20,6 +20,7 @@ class FileUpload extends Component {
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.descriptionChecker = this.descriptionChecker.bind(this);
     this.fileUploader = this.fileUploader.bind(this);
+    this.formDataHandler = this.formDataHandler.bind(this);
   }
 
   handleUploadFormChange(e) {
@@ -58,10 +59,25 @@ class FileUpload extends Component {
       this.setState({errorMessage: "Please upload your files and enter a description"});
       console.log('not submitted');
     };
+    const filesAry = this.state.files;
+    this.formDataHandler(filesAry);
+  }
+
+  formDataHandler(filesAry) {
+    const formDataAry = [];
+    filesAry.forEach(() => formDataAry.push(new FormData()));
+    console.log(formDataAry);
+    
+    // payload.forEach((fileObj) => {
+    //   formData.append('file', fileObj.file)
+    //   formData.append('description', fileObj.description)
+    //   formDataAry.push(formData)
+    // });
+    // console.log(formDataAry);
   }
 
   fileUploader(payload) {
-    
+    return;
   }
 
   render() {
