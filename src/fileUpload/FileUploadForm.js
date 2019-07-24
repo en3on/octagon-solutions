@@ -3,7 +3,7 @@
 
 import React, {Component} from 'react';
 import {Form, Button, ListGroup, Alert} from 'react-bootstrap';
-// import {Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import './FileUpload.css';
 
@@ -51,16 +51,19 @@ class FileUpload extends Component {
       return
     };
     const filesAry = this.state.files;
-    const data = {
-      files: filesAry
-    };
-    console.log(data);
-    this.fileUploader(data);
+    const formData = new FormData();
+    filesAry.forEach((file) => {
+      formData.append('documents', file)
+    })
+    // formData.append('documents', filesAry[0]);
+    console.log(formData.getAll('documents'));
+    this.fileUploader(formData);
   }
 
 
   async fileUploader(payload) {
     console.log(payload);
+
     try {
     //   const response = await axios({
     //     method: 'post',
@@ -78,22 +81,28 @@ class FileUpload extends Component {
       });
       const {status: responseStatus} = response; 
 
-      this.setState({responseStatus});
+      this.setState({
+        responseStatus,
+        inSubmit: false,
+      });
       console.log('succeeded', responseStatus);
 
     } catch(exception) {
         const {message : errorMessage} = exception.response.data.error;
-        this.setState({errorMessage});
+        this.setState({
+          errorMessage,
+          inSubmit: false,
+        });
         console.log('failed', errorMessage);
     }
   }
 
   render() {
-    // if(this.state.responseStatus === 201) {
-    //   return (
-    //     <Redirect to="/user/:id" /> 
-    //   )
-    // };
+    if(this.state.responseStatus === 201) {
+      return (
+        <Redirect to="/" /> 
+      )
+    };
     return (
       <div className="form-component-container">
         <Form className="file-upload-form">
