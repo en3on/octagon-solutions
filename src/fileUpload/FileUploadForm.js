@@ -100,7 +100,7 @@ class FileUpload extends Component {
   render() {
     if(this.state.responseStatus === 201) {
       return (
-        <Redirect to="/" /> 
+        <Redirect to="/user/1" /> 
       )
     };
     return (
