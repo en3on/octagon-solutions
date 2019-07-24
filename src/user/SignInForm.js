@@ -32,26 +32,33 @@ class SignInForm extends React.Component {
       'email': this.state.email,
       'password': this.state.password,
     };
+    this.setState({inSubmit: true})
     this.login(data);
   }
 
   async login(payload) {
     try {
-      const response = await axios.post('http://localhost:5000/auth/login', payload);
+      const response = await axios.post(process.env.REACT_APP_API_URL + 'auth/login', payload);
+      console.log(response.data);
       const {token, message} = response.data;
-
-      localStorage.setItem('loginToken', token)
+      const {_id : id, firstName, lastName, email} = response.data.user;
+      // create global state values, almost similar to a redux store
+      localStorage.setItem('loginToken', token);
+      localStorage.setItem('id', id);
+      localStorage.setItem('email', email)
+      localStorage.setItem('firstName', firstName);
+      localStorage.setItem('lastName', lastName);
 
       this.setState({
         authenticated: true,
         successMessage: message,
         errorResponse: '',
       });
-      // add a redirect route
 
     } catch(exception) {
       this.setState({
         errorResponse: exception.response.data.error,
+        inSubmit: false,
       });
     };
   }
@@ -66,13 +73,19 @@ class SignInForm extends React.Component {
 
 
   render() {
+    if(this.state.authenticated) {
+      return (
+        <Redirect to={`/user/${localStorage.getItem('id')}`} />
+      );
+    };
       return (
         <div className="centered-content">
           <div className="form-component-container">
             <Form className="outer-form" onSubmit={this.submitHandler}>
               {this.state.arriveForgotPage !== undefined && <Alert variant="success"> Password successfully reset. Please login.</Alert>}
               {(this.state.errorResponse.message || this.state.authenticated) && 
-              <Alert variant={`${this.state.authenticated ? "success" : "danger"}`}>
+              <Alert variant={`${this.state.authenticated || this.state.inSubmit ? "success" : "danger"}`}>
+                {this.state.inSubmit && 'Logging in'}
                 {this.state.errorResponse.message}
                 {this.state.successMessage}
               </Alert>}

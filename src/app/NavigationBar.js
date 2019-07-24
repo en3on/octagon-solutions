@@ -26,7 +26,7 @@ class NavigationBar extends Component {
           </Nav>
           <Nav>
             {this.props.isAuthenticated &&
-            <Nav.Link><Link to="/user/1">My Account</Link></Nav.Link>}
+            <Nav.Link href="/">My Account</Nav.Link>}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
