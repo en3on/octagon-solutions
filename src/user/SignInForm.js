@@ -38,7 +38,7 @@ class SignInForm extends React.Component {
 
   async login(payload) {
     try {
-      const response = await axios.post(process.env.REACT_APP_API_URL + 'auth/login', payload);
+      const response = await axios.post(process.env.REACT_APP_API_URL + '/auth/login', payload);
       console.log(response.data);
       const {token, message} = response.data;
       const {_id : id, firstName, lastName, email} = response.data.user;
