@@ -26,11 +26,13 @@ class FileUpload extends Component {
   }
 
   handleUploadFormChange(e) {
+    console.log({e});
     this.setState({
       files: [...this.state.files, {file: e.target.files[0], description: ''}],
       filenames: [...this.state.filenames, e.target.files[0].name],
       errorMessage: '',
     });
+    console.log(this.state);
     e.target.value = '';
   }
 
@@ -67,28 +69,27 @@ class FileUpload extends Component {
   }
 
   formDataHandler(filesAry) {
-    let formData;
-    const formDataAry = [];
-    filesAry.forEach((fileObj) => {
-      formData = new FormData();
-      formData.append('file', fileObj.file)
-      formData.append('description', fileObj.description)
-      formDataAry.push(formData)
-    })
-    this.fileUploader(formDataAry);
+    this.fileUploader(filesAry);
   }
 
   async fileUploader(payload) {
+    console.log({payload});
     try {
-      const response = await axios({
-        method: 'post',
-        url: process.env.REACT_APP_API_URL + '/documents/upload',
-        data: payload,
+    //   const response = await axios({
+    //     method: 'post',
+    //     url: process.env.REACT_APP_API_URL + '/documents/upload',
+    //     headers: {
+    //     'token': `${localStorage.getItem('loginToken')}`,
+    //     'content-type': `application/x-www-form-urlencoded`,
+    //     },
+    // });
+      const response = await axios.post(process.env.REACT_APP_API_URL + '/documents/upload', payload, {
         headers: {
-        'token': `${localStorage.getItem('loginToken')}`,
-        'content-type': `multipart/form-data; boundary=${payload._boundary}`,
+          token: localStorage.getItem('loginToken'),
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
-    });
+      });
+
       const {status: responseStatus} = response; 
 
       this.setState({responseStatus});
