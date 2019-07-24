@@ -20,7 +20,28 @@ class UserEditPage extends Component {
   }
 
   async editDetailsHandler(payload) {
-    // Method to post data
+    try {
+      const response = await axios.post(process.env.REACT_APP_API_URL + '/user/changeSettings', payload, {
+        headers: {
+          'token': localStorage.getItem('loginToken'),
+        },
+      });
+      const {status : responseStatus} = response; 
+      const {message : responseMessage} = response.data;
+      
+      this.setState({
+        responseStatus,
+        responseMessage,
+      })
+
+    } catch(exception) {
+      const {message : responseMessage, requirements} = exception.response.data.error;
+      this.setState({
+        responseMessage,
+        requirements,
+      })
+    }
+
   }
 
   render() {
