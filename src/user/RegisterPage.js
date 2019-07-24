@@ -5,6 +5,7 @@
 
 import React, {Component} from 'react';
 import {Alert} from 'react-bootstrap';
+import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import './RegisterPage.css';
 import RegisterForm from './RegisterForm';
