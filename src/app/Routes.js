@@ -6,8 +6,9 @@ import PageNotFound from './PageNotFound';
 import ProtectedRoutes from './ProtectedRoutes';
 import PasswordResetForm from '../user/PasswordResetForm';
 import SignInForm from '../user/SignInForm';
+import ContactForm from '../contact/ContactForm';
 import PasswordResetRequestForm from '../user/PasswordResetRequestForm';
-
+import AboutPage from '../about/AboutPage';
 
 class Routes extends Component {
 
@@ -17,6 +18,8 @@ class Routes extends Component {
       <Switch>
         <Route path="/signin" component={SignInForm} />
         <Route path="/register" component={RegisterPage} />
+        <Route path="/contact" component={ContactForm} />
+        <Route path="/about" component={AboutPage} />
         <Route path="/requestPassword" component={PasswordResetRequestForm} />
         <Route path="/forgot/:authString" component={PasswordResetForm} /> 
         <Route exact path="/" component={Home} />
