@@ -3,14 +3,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-}
-
-.outer-form {
   border: .2rem solid #ececec;
   padding: 1em;
   width: 50%;
   border-radius: 10px;
+}
+
+.outer-form {
+  width: 100% !important;
+  border: none !important;
+}
+
+.alertStyle {
+  width: 90%;
 }
 
 .link-container {
