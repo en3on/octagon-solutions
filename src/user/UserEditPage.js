@@ -23,7 +23,7 @@ class UserEditPage extends Component {
     try {
       const response = await axios.post(process.env.REACT_APP_API_URL + '/user/changeSettings', payload, {
         headers: {
-          'token': localStorage.getItem('loginToken'),
+          token: localStorage.getItem('loginToken'),
         },
       });
       const {status : responseStatus} = response; 
