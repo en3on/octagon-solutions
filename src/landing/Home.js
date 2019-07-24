@@ -51,7 +51,7 @@ class Home extends Component {
       <h2 className="text-center line-height-8">Our uniquely tailored packages:</h2>
       <div className="services-container ">
         <PackageCard 
-        img="https://images.unsplash.com/photo-1554224155-a1487473ffd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=286&q=80"
+        img="https://i.imgur.com/CJZxxND.jpg"
         title="Lite"  
         text={
           <>
@@ -66,7 +66,7 @@ class Home extends Component {
         price={<><b>350</b><span> <em>a month</em></span></>}
         />
         <PackageCard
-        img="https://images.unsplash.com/photo-1554252116-45f0b7a4969b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=286&q=80" 
+        img="https://i.imgur.com/HrdO3iR.jpg" 
         title="Ultimate"
         text={
           <>
@@ -83,7 +83,7 @@ class Home extends Component {
         price={<><b>750</b><span> <em>a month</em></span></>}
         />
         <PackageCard 
-        img="https://images.unsplash.com/photo-1554224154-26032ffc0d07?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=286&q=60"
+        img="https://i.imgur.com/j9PCOq1.jpg"
         title="Premium"
         text={
           <>
