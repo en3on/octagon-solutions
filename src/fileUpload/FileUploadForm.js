@@ -100,7 +100,7 @@ class FileUpload extends Component {
   render() {
     if(this.state.responseStatus === 201) {
       return (
-        <Redirect to="/user/1" /> 
+        <Redirect to={`/user/${localStorage.getItem('id')}`} />
       )
     };
     return (

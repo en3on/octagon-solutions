@@ -17,15 +17,10 @@ class UserEditPage extends Component {
     this.state = {authenticated: false, errorResponse: {}};
 
     this.editDetailsHandler = this.editDetailsHandler.bind(this);
-    this.fetchDetails = this.fetchDetails.bind(this);
   }
 
   async editDetailsHandler(payload) {
     // Method to post data
-  }
-
-  async fetchDetails() {
-    // Method to fetch details of the user
   }
 
   render() {
@@ -39,9 +34,9 @@ class UserEditPage extends Component {
         </Alert>}
         <RegisterForm 
         onSubmission={this.editDetailsHandler} 
-        firstName="" 
-        lastName="" 
-        email=""
+        firstName={localStorage.getItem('firstName')} 
+        lastName={localStorage.getItem('lastName')} 
+        email={localStorage.getItem('email')}
         submitButton="Edit Details" 
         />
       </div>
