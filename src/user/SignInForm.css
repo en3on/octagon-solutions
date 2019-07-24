@@ -1,0 +1,26 @@
+.form-component-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: .2rem solid #ececec;
+  padding: 1em;
+  width: 50%;
+  border-radius: 10px;
+}
+
+.outer-form {
+  width: 100% !important;
+  border: none !important;
+}
+
+.alertStyle {
+  width: 90%;
+}
+
+.link-container {
+  margin: 10px 0 0 0;
+  text-align: center;
+}
+
+.text-centered { text-align: center  }

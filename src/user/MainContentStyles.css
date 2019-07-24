@@ -1,0 +1,7 @@
+.centered-content {
+  display: flex;
+  height: 100vh;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
