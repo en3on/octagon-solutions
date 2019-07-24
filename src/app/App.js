@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Routes from './Routes';
+import Footer from './Footer';
 import NavigationBar from './NavigationBar';
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
       <div>
         <NavigationBar isAuthenticated={this.state.isAuthenticated} />
         <Routes authToken={auth} />
+        <Footer />
       </div>
     );
   };
