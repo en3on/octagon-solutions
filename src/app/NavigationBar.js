@@ -26,7 +26,7 @@ class NavigationBar extends Component {
           </Nav>
           <Nav>
             {this.props.isAuthenticated &&
-            <Nav.Link href="/">My Account</Nav.Link>}
+            <Nav.Link href={`/user/${localStorage.getItem('id')}`}>My Account</Nav.Link>}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
