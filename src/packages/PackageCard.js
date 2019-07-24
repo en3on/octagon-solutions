@@ -15,7 +15,7 @@ class PackageCard extends Component {
           <Card.Text>
             Price: ${this.props.price}
           </Card.Text>
-          <Button variant="info">More Information</Button>
+          <Button variant="primary">Contact</Button>
       </Card.Body>
       </Card>
     );
