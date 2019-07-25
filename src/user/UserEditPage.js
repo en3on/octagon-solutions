@@ -17,15 +17,31 @@ class UserEditPage extends Component {
     this.state = {authenticated: false, errorResponse: {}};
 
     this.editDetailsHandler = this.editDetailsHandler.bind(this);
-    this.fetchDetails = this.fetchDetails.bind(this);
   }
 
   async editDetailsHandler(payload) {
-    // Method to post data
-  }
+    try {
+      const response = await axios.post(process.env.REACT_APP_API_URL + '/user/changeSettings', payload, {
+        headers: {
+          token: localStorage.getItem('loginToken'),
+        },
+      });
+      const {status : responseStatus} = response; 
+      const {message : responseMessage} = response.data;
+      
+      this.setState({
+        responseStatus,
+        responseMessage,
+      })
 
-  async fetchDetails() {
-    // Method to fetch details of the user
+    } catch(exception) {
+      const {message : responseMessage, requirements} = exception.response.data.error;
+      this.setState({
+        responseMessage,
+        requirements,
+      })
+    }
+
   }
 
   render() {
@@ -39,9 +55,9 @@ class UserEditPage extends Component {
         </Alert>}
         <RegisterForm 
         onSubmission={this.editDetailsHandler} 
-        firstName="" 
-        lastName="" 
-        email=""
+        firstName={localStorage.getItem('firstName')} 
+        lastName={localStorage.getItem('lastName')} 
+        email={localStorage.getItem('email')}
         submitButton="Edit Details" 
         />
       </div>
