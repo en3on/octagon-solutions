@@ -8,7 +8,14 @@ class Home extends Component {
   render() {
     return (
       <div>
-        {this.props.location.state && this.props.location.state.isAuthenticated && <Alert className="m-3" variant="success">You have successfully Signed In! <a href={`/user/${localStorage.getItem('id')}`}><b>Click Here to go to your account.</b></a></Alert>}
+        {this.props.location.state && this.props.location.state.loggedOut &&
+          <Alert className="m-3" variant="info">
+            You have successfully logged out! <a href="/signin"><b>Click here</b></a> to log back in.
+          </Alert>}
+        {this.props.location.state && this.props.location.state.isAuthenticated && 
+        <Alert className="m-3" variant="success">
+          You have successfully Signed In! <a href={`/user/${localStorage.getItem('id')}`}><b>Click Here to go to your account.</b></a>
+          </Alert>}
       <Jumbotron>
         <h1>Welcome to Octogon Accounting Solutions!</h1>
         <p>Octagon Bookkeeping Solutions is a professional organisation that provides comprehensive bookkeeping and administrative services for small businesses.</p>
