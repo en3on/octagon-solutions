@@ -1,0 +1,8 @@
+.listGroupItem:hover {
+  background-color: #0f8;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
