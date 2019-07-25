@@ -8,6 +8,7 @@ import {Alert} from 'react-bootstrap';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import './RegisterPage.css';
+import Footer from '../app/Footer';
 import RegisterForm from './RegisterForm';
 
 class RegisterPage extends Component {
@@ -73,18 +74,24 @@ class RegisterPage extends Component {
       )
     }
     return (
-      <div className="form-component-container">
-        {this.state.responseMessage && 
-        <Alert variant={this.state.responseStatus === 201 ? "success" : "danger"} className="alertStyle">
-          {this.state.responseMessage}
-          {this.state.requirements && 
-            this.state.requirements.map((requirement, idx) => <li key={idx}>{requirement}</li>)}
-        </Alert>}
-        <RegisterForm 
-        onSubmission={this.register} 
-        submitButton="Register" 
-        />
+      <>
+      <div className="centered-content register-view-adjust">
+        <h1 className="text-center">Sign In to Your Account</h1>
+          <div className="content-container register-form-component-container">
+            {this.state.responseMessage && 
+            <Alert variant={this.state.responseStatus === 201 ? "success" : "danger"} className="alertStyle">
+              {this.state.responseMessage}
+              {this.state.requirements && 
+                this.state.requirements.map((requirement, idx) => <li key={idx}>{requirement}</li>)}
+            </Alert>}
+            <RegisterForm 
+            onSubmission={this.register} 
+            submitButton="Register" 
+            />
+          </div>
       </div>
+      <Footer />
+      </>
     );
   };
 }

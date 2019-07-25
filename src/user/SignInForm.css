@@ -1,13 +1,12 @@
-.form-component-container {
-  display: flex;
+.signin-form-component-container {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: .2rem solid #ececec;
   padding: 1em;
-  width: 50%;
-  border-radius: 10px;
+  width: 50% !important;
 }
+
+
 
 .outer-form {
   width: 100% !important;
@@ -19,8 +18,8 @@
 }
 
 .link-container {
-  margin: 10px 0 0 0;
   text-align: center;
+  padding-bottom: 10px;
 }
 
 .text-centered { text-align: center  }

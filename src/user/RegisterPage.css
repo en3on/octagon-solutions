@@ -1,12 +1,13 @@
-.form-component-container {
-  display: flex;
+.register-form-component-container {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: .2rem solid #ececec;
-  padding: 1em;
-  width: 50%;
-  border-radius: 10px;
+  padding: 1em !important;
+  width: 50% !important;
+}
+
+.register-view-adjust {
+  height: 100vh !important;
 }
 
 .alertStyle {

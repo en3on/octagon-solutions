@@ -4,9 +4,10 @@
 import React from 'react';
 import {Form, Button, Alert} from 'react-bootstrap';
 import {Link, Redirect} from 'react-router-dom';
+import axios from 'axios';
+import Footer from '../app/Footer';
 import './SignInForm.css';
 import './MainContentStyles.css';
-import axios from 'axios';
 
 class SignInForm extends React.Component {
   constructor(props) {
@@ -84,8 +85,10 @@ class SignInForm extends React.Component {
       )
     };
       return (
+        <>
         <div className="centered-content">
-          <div className="form-component-container">
+          <h1 className="text-center">Sign In to Your Account</h1>
+          <div className="content-container signin-form-component-container">
             <Form className="outer-form" onSubmit={this.submitHandler}>
               {this.state.arriveForgotPage !== undefined && <Alert variant="success"> Password successfully reset. Please login.</Alert>}
               {(this.state.errorResponse.message || this.state.authenticated) && 
@@ -111,6 +114,8 @@ class SignInForm extends React.Component {
             </div>
           </div>
         </div>
+        <Footer />
+        </>
       )
   }
 } 
