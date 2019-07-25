@@ -5,6 +5,7 @@ import React, {Component} from 'react';
 import {Form, Button, ListGroup, Alert} from 'react-bootstrap';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
+import Footer from '../app/Footer';
 import './FileUpload.css';
 
 
@@ -86,33 +87,39 @@ class FileUpload extends Component {
       )
     };
     return (
-      <div className="form-component-container">
-        <Form className="file-upload-form">
-        <div id="file-uploading">
-          {this.state.inSubmit && <Alert variant="success">Uploading Files. Please Wait.</Alert>}
-        </div>  
-        <div id="file-not-found">
-          {this.state.errorMessage && <Alert variant="danger">{this.state.errorMessage}</Alert>}
-        </div>
-          <Form.Group controlId="fileUploader">
-            <Form.Label>Upload Your Files</Form.Label>
-            <Form.Control type="file" onChange={this.handleUploadFormChange} required /> 
-          </Form.Group>
-          <div id="uploadedFilesLabel">
-            <span>Your Uploaded Files:</span>
+      <>
+      <div className="centered-content">
+        <h1 className="text-center">Upload Your Files To The Accountant</h1>
+        <div className="content-container upload-form-component-container">
+          <Form>
+          <div id="file-uploading">
+            {this.state.inSubmit && <Alert variant="success">Uploading Files. Please Wait.</Alert>}
+          </div>  
+          <div id="file-not-found">
+            {this.state.errorMessage && <Alert variant="danger">{this.state.errorMessage}</Alert>}
           </div>
-          {this.state.files.map((file) => {
-            return (
-              <ListGroup key={file.name}>
-                <ListGroup.Item className="itemUpload" variant="dark" key={file.name}>{file.name}</ListGroup.Item>
-              </ListGroup>
-            );
-          })}
-          <Button className="my-2" variant="primary" id="fileSubmitButton" type="submit" onClick={this.submitHandler} disabled={this.state.insubmit}>
-            Submit
-          </Button>
-        </Form>
+            <Form.Group controlId="fileUploader">
+              <Form.Label>Upload Your Files</Form.Label>
+              <Form.Control type="file" onChange={this.handleUploadFormChange} required /> 
+            </Form.Group>
+            <div id="uploadedFilesLabel">
+              <span>Your Uploaded Files:</span>
+            </div>
+            {this.state.files.map((file) => {
+              return (
+                <ListGroup key={file.name}>
+                  <ListGroup.Item className="itemUpload" variant="dark" key={file.name}>{file.name}</ListGroup.Item>
+                </ListGroup>
+              );
+            })}
+            <Button className="my-2" variant="primary" size="lg" id="fileSubmitButton" type="submit" onClick={this.submitHandler} disabled={this.state.insubmit} block>
+              Submit
+            </Button>
+          </Form>
+        </div>
       </div>
+      <Footer />
+      </>
     )
   }
 } 
