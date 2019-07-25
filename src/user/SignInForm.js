@@ -75,7 +75,7 @@ class SignInForm extends React.Component {
   render() {
     if(this.state.authenticated) {
       return (
-        <Redirect to={`/user/${localStorage.getItem('id')}`} />
+        <Redirect to='/' />
       );
     };
       return (

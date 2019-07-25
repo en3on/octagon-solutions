@@ -20,17 +20,30 @@ class RegisterPage extends Component {
   }
 
   async register(payload) {
+    const {email : emailLogin, password} = payload
     try {
       const response = await axios.post(process.env.REACT_APP_API_URL + '/auth/register', payload);
       const {status: responseStatus} = response;
       const {message : responseMessage, token} = response.data;
-      const {_id : id, firstName, lastName, email} = response.data.user;
+      const {firstName, lastName, email} = response.data.user;
       // create global state values, almost similar to a redux store
       localStorage.setItem('loginToken', token);
-      localStorage.setItem('id', id);
       localStorage.setItem('email', email)
       localStorage.setItem('firstName', firstName);
       localStorage.setItem('lastName', lastName);
+
+      try {
+        const innerLoginRequestData = {
+          'email': emailLogin,
+          'password': password,
+        }
+        const response = await axios.post(process.env.REACT_APP_API_URL + '/auth/login', innerLoginRequestData);
+        const {_id : id} = response.data.user;
+        localStorage.setItem('id', id);
+
+      } catch(innerException) {
+        console.log(innerException);
+      }
 
       this.setState({
         authenticated: true,
@@ -51,7 +64,7 @@ class RegisterPage extends Component {
   render() {
     if(this.state.authenticated) {
       return (
-        <Redirect to={`/user/${localStorage.getItem('id')}`} />
+        <Redirect to='/' />
       );
     };
     return (
