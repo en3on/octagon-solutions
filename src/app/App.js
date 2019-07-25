@@ -24,7 +24,7 @@ class App extends Component {
       <div>
         <NavigationBar isAuthenticated={this.state.isAuthenticated} />
         <Routes authToken={auth} />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   };
