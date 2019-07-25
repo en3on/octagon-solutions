@@ -1,0 +1,30 @@
+.cards-container {
+  display: flex;
+  width: 100%;
+  text-align: center;
+  justify-content: space-evenly;
+}
+
+.userdashboard-container {
+  display: flex;
+  flex-flow: column;
+  height: 80vh;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+
+.welcome-card {
+  width: 50%;
+  text-align: center;
+  background-color: azure;
+}
+
+.userdash-link {
+  color: #fff;
+}
+
+.userdash-link:hover {
+  color: #fff;
+  text-decoration: none;
+}
