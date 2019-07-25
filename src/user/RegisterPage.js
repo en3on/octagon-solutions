@@ -64,9 +64,14 @@ class RegisterPage extends Component {
   render() {
     if(this.state.authenticated) {
       return (
-        <Redirect to='/' />
-      );
-    };
+        <Redirect
+        to={{
+          pathname: "/",
+          state: { isAuthenticated: true }
+        }}
+        />
+      )
+    }
     return (
       <div className="form-component-container">
         {this.state.responseMessage && 
