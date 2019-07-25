@@ -61,7 +61,7 @@ class PasswordResetRequestForm extends Component {
             <Alert className="text-centered" variant="success">
               Thanks! <br /> Please check your email for instructions on how to create a new password.
               <div className="link-container">
-                <Link to="/home">Return To Home</Link>
+                <Link to="/">Return To Home</Link>
               </div>
             </Alert>
           </div>

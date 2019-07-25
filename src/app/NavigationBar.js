@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Navbar, Nav} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
 
 class NavigationBar extends Component {
   render() {
@@ -25,8 +24,8 @@ class NavigationBar extends Component {
             <Nav.Link href="/contact">Contact</Nav.Link>
           </Nav>
           <Nav>
-            {this.props.isAuthenticated &&
-            <Nav.Link><Link to="/user/1">My Account</Link></Nav.Link>}
+            {(this.props.isAuthenticated || localStorage.getItem('loginToken')) &&
+            <Nav.Link href={`/user/${localStorage.getItem('id')}`}>My Account</Nav.Link>}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

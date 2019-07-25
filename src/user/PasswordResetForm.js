@@ -22,8 +22,7 @@ class PasswordResetForm extends Component {
       'authString': authString,
       'newPassword': this.state.newPassword,
     };
-    // this.resetPassword(data);
-    this.setState({responseStatus: 201});
+    this.resetPassword(data);
   }
 
   handleFormChange(e) {

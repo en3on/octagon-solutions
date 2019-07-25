@@ -58,7 +58,7 @@ class RegisterForm extends Component {
       [currentTarget.name]: currentTarget.value,
     });
   }
-
+  
   render() {
     return (
         <Form className="register-form" onSubmit={this.submitHandler}>

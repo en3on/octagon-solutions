@@ -31,15 +31,6 @@ class FileUpload extends Component {
     e.target.value = '';
   }
 
-  // handleDescriptionChange(e) {
-  //   const files = this.state.files.slice();
-  //   files[e.target.name].description = e.target.value;
-  //   this.setState({
-  //     files,
-  //     errorMessage: '',
-  //   });
-  // }
-
   submitHandler(e) {
     e.preventDefault();
     if(this.state.files.length !== 0) {
@@ -55,7 +46,6 @@ class FileUpload extends Component {
     filesAry.forEach((file) => {
       formData.append('documents', file)
     })
-    // formData.append('documents', filesAry[0]);
     console.log(formData.getAll('documents'));
     this.fileUploader(formData);
   }
@@ -65,14 +55,6 @@ class FileUpload extends Component {
     console.log(payload);
 
     try {
-    //   const response = await axios({
-    //     method: 'post',
-    //     url: process.env.REACT_APP_API_URL + '/documents/upload',
-    //     headers: {
-    //     'token': `${localStorage.getItem('loginToken')}`,
-    //     'content-type': `application/x-www-form-urlencoded`,
-    //     },
-    // });
       const response = await axios.post(process.env.REACT_APP_API_URL + '/documents/upload', payload, {
         headers: {
           token: localStorage.getItem('loginToken'),
@@ -100,7 +82,7 @@ class FileUpload extends Component {
   render() {
     if(this.state.responseStatus === 201) {
       return (
-        <Redirect to="/user/1" /> 
+        <Redirect to={`/user/${localStorage.getItem('id')}`} />
       )
     };
     return (

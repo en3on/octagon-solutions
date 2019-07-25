@@ -5,6 +5,7 @@
 
 import React, {Component} from 'react';
 import {Alert} from 'react-bootstrap';
+import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import './RegisterPage.css';
 import RegisterForm from './RegisterForm';
@@ -19,12 +20,30 @@ class RegisterPage extends Component {
   }
 
   async register(payload) {
+    const {email : emailLogin, password} = payload
     try {
       const response = await axios.post(process.env.REACT_APP_API_URL + '/auth/register', payload);
       const {status: responseStatus} = response;
       const {message : responseMessage, token} = response.data;
+      const {firstName, lastName, email} = response.data.user;
+      // create global state values, almost similar to a redux store
+      localStorage.setItem('loginToken', token);
+      localStorage.setItem('email', email)
+      localStorage.setItem('firstName', firstName);
+      localStorage.setItem('lastName', lastName);
 
-      localStorage.setItem('token', token);
+      try {
+        const innerLoginRequestData = {
+          'email': emailLogin,
+          'password': password,
+        }
+        const response = await axios.post(process.env.REACT_APP_API_URL + '/auth/login', innerLoginRequestData);
+        const {_id : id} = response.data.user;
+        localStorage.setItem('id', id);
+
+      } catch(innerException) {
+        console.log(innerException);
+      }
 
       this.setState({
         authenticated: true,
@@ -43,6 +62,16 @@ class RegisterPage extends Component {
   }
 
   render() {
+    if(this.state.authenticated) {
+      return (
+        <Redirect
+        to={{
+          pathname: "/",
+          state: { isAuthenticated: true }
+        }}
+        />
+      )
+    }
     return (
       <div className="form-component-container">
         {this.state.responseMessage && 
