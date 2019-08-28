@@ -36,6 +36,22 @@ It contains the following features:
 * Document CRUD
 * Booking system for future meetings
 
+### Libraries used
+* Axios for handling REST interactions between the UI and the webAPI
+* Bootstrap for implementing a production ready interface through pre-assembled components
+* Mailer - Used for sending emails such as registration confirmation, password reset and appointment confirmation
+* Bcrypt - used for encrypting user passwords
+* jsonwebtoken - handled user sessions by storing a token in the browser that was sent on protected requests
+* mongoose - managing interactions with MongoDB
+* multer - easily handle form data
+* randomstring - used to generate a random ASCII string. This was useful for our password reset functionality.
+* mocha/ chai - used for testing our application during development
+
+## Source control process
+Our process for source control was creating seperate branches for each individual feature/bugfix. Work would be completed on these individual branches and then have the latest master branch changes merged into it. Upon fixing of any pull requests (if present), a pull-request would be made for the finished feature/bugfix. The other two team members who did not work on the branch would be assigned as reviewers. The changes would only be merged into master once both reviewers had reviewed and accepted changes.
+
+Tickets were created, assigned and maintained through GitHub Projects using an Automated Kabana board.
+
 ## Design
 [Figma](https://www.figma.com/file/Pr9M6yyNefn12n9wxN2oTxcF/Untitled?node-id=0%3A1)
 The design process was a long and difficult one, as the productivity/availability from the team member initially leading this task, became severely limited over time.
